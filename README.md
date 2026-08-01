@@ -8,10 +8,10 @@
 
 ## Installation
 
-To use the Jupiter API client, you need to have Node.js and npm (Node Package Manager) installed. Then, you can install the package using npm:
+Install the package:
 
 ```bash
-npm install @jup-ag/api
+bun add @jup-ag/api
 ```
 
 ## Usage
