@@ -24,7 +24,6 @@
     "lint": "oxlint --fix",
     "lint:check": "oxlint",
     "openapi-gen": "openapi-generator-cli generate -i swagger.yaml -o generated -g typescript-fetch --skip-validate-spec --additional-properties=supportsES6=true,typescriptThreePlus=true",
-    "openapi-gen-rust": "openapi-generator-cli generate -i swagger.yaml -o generated -g rust",
     "prepare": "husky"
   },
   "devDependencies": {
