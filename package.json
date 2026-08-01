@@ -10,9 +10,10 @@
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "typings": "dist/index.d.ts",
+  "type": "module",
   "sideEffects": false,
   "scripts": {
-    "build": "bun run openapi-gen && tsup src/index.ts --dts --format esm,cjs",
+    "build": "bun run openapi-gen && tsdown",
     "openapi-gen": "openapi-generator-cli generate -i swagger.yaml -o generated -g typescript-fetch --skip-validate-spec --additional-properties=supportsES6=true,typescriptThreePlus=true",
     "openapi-gen-rust": "openapi-generator-cli generate -i swagger.yaml -o generated -g rust"
   },
@@ -21,7 +22,7 @@
   "devDependencies": {
     "@openapitools/openapi-generator-cli": "^2.9.0",
     "@types/bun": "^1.3.14",
-    "tsup": "^7.1.0",
+    "tsdown": "^0.22.14",
     "typescript": "^5.1.6"
   },
   "files": [
