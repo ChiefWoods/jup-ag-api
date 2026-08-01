@@ -1,3 +1,0 @@
-- bump version
-- pnpm build
-- npm publish --access public
