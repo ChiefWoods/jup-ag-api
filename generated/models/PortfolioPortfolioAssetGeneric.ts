@@ -49,7 +49,7 @@ export interface PortfolioPortfolioAssetGeneric {
      * @type {string}
      * @memberof PortfolioPortfolioAssetGeneric
      */
-    type: string;
+    type: PortfolioPortfolioAssetGenericTypeEnum;
     /**
      * 
      * @type {PortfolioNetworkId}
@@ -105,6 +105,16 @@ export interface PortfolioPortfolioAssetGeneric {
      */
     data: PortfolioPortfolioAssetGenericData;
 }
+
+
+/**
+ * @export
+ */
+export const PortfolioPortfolioAssetGenericTypeEnum = {
+    Generic: 'generic'
+} as const;
+export type PortfolioPortfolioAssetGenericTypeEnum = typeof PortfolioPortfolioAssetGenericTypeEnum[keyof typeof PortfolioPortfolioAssetGenericTypeEnum];
+
 
 /**
  * Check if a given object implements the PortfolioPortfolioAssetGeneric interface.

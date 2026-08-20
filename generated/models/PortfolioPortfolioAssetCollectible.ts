@@ -49,7 +49,7 @@ export interface PortfolioPortfolioAssetCollectible {
      * @type {string}
      * @memberof PortfolioPortfolioAssetCollectible
      */
-    type: string;
+    type: PortfolioPortfolioAssetCollectibleTypeEnum;
     /**
      * 
      * @type {PortfolioNetworkId}
@@ -105,6 +105,16 @@ export interface PortfolioPortfolioAssetCollectible {
      */
     data: PortfolioPortfolioAssetCollectibleData;
 }
+
+
+/**
+ * @export
+ */
+export const PortfolioPortfolioAssetCollectibleTypeEnum = {
+    Collectible: 'collectible'
+} as const;
+export type PortfolioPortfolioAssetCollectibleTypeEnum = typeof PortfolioPortfolioAssetCollectibleTypeEnum[keyof typeof PortfolioPortfolioAssetCollectibleTypeEnum];
+
 
 /**
  * Check if a given object implements the PortfolioPortfolioAssetCollectible interface.

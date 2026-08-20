@@ -39,7 +39,7 @@ import {
  * 
  * @export
  */
-export type PortfolioPortfolioAsset = { type: 'collectible' } & PortfolioAssetCollectible | { type: 'generic' } & PortfolioAssetGeneric | { type: 'token' } & PortfolioAssetToken;
+export type PortfolioPortfolioAsset = { type: 'collectible' } & PortfolioPortfolioAssetCollectible | { type: 'generic' } & PortfolioPortfolioAssetGeneric | { type: 'token' } & PortfolioPortfolioAssetToken;
 
 export function PortfolioPortfolioAssetFromJSON(json: any): PortfolioPortfolioAsset {
     return PortfolioPortfolioAssetFromJSONTyped(json, false);
@@ -51,11 +51,11 @@ export function PortfolioPortfolioAssetFromJSONTyped(json: any, ignoreDiscrimina
     }
     switch (json['type']) {
         case 'collectible':
-            return {...PortfolioAssetCollectibleFromJSONTyped(json, true), type: 'collectible'};
+            return {...PortfolioPortfolioAssetCollectibleFromJSONTyped(json, true), type: 'collectible'};
         case 'generic':
-            return {...PortfolioAssetGenericFromJSONTyped(json, true), type: 'generic'};
+            return {...PortfolioPortfolioAssetGenericFromJSONTyped(json, true), type: 'generic'};
         case 'token':
-            return {...PortfolioAssetTokenFromJSONTyped(json, true), type: 'token'};
+            return {...PortfolioPortfolioAssetTokenFromJSONTyped(json, true), type: 'token'};
         default:
             throw new Error(`No variant of PortfolioPortfolioAsset exists with 'type=${json['type']}'`);
     }
@@ -70,11 +70,11 @@ export function PortfolioPortfolioAssetToJSON(value?: PortfolioPortfolioAsset | 
     }
     switch (value['type']) {
         case 'collectible':
-            return PortfolioAssetCollectibleToJSON(value);
+            return PortfolioPortfolioAssetCollectibleToJSON(value);
         case 'generic':
-            return PortfolioAssetGenericToJSON(value);
+            return PortfolioPortfolioAssetGenericToJSON(value);
         case 'token':
-            return PortfolioAssetTokenToJSON(value);
+            return PortfolioPortfolioAssetTokenToJSON(value);
         default:
             throw new Error(`No variant of PortfolioPortfolioAsset exists with 'type=${value['type']}'`);
     }

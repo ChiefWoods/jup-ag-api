@@ -43,7 +43,7 @@ export interface PortfolioPortfolioElementTrade {
      * @type {string}
      * @memberof PortfolioPortfolioElementTrade
      */
-    type: string;
+    type: PortfolioPortfolioElementTradeTypeEnum;
     /**
      * 
      * @type {PortfolioNetworkId}
@@ -93,6 +93,16 @@ export interface PortfolioPortfolioElementTrade {
      */
     data: PortfolioPortfolioElementTradeData;
 }
+
+
+/**
+ * @export
+ */
+export const PortfolioPortfolioElementTradeTypeEnum = {
+    Trade: 'trade'
+} as const;
+export type PortfolioPortfolioElementTradeTypeEnum = typeof PortfolioPortfolioElementTradeTypeEnum[keyof typeof PortfolioPortfolioElementTradeTypeEnum];
+
 
 /**
  * Check if a given object implements the PortfolioPortfolioElementTrade interface.

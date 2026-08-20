@@ -43,7 +43,7 @@ export interface PortfolioPortfolioElementLeverage {
      * @type {string}
      * @memberof PortfolioPortfolioElementLeverage
      */
-    type: string;
+    type: PortfolioPortfolioElementLeverageTypeEnum;
     /**
      * 
      * @type {PortfolioNetworkId}
@@ -93,6 +93,16 @@ export interface PortfolioPortfolioElementLeverage {
      */
     data: PortfolioPortfolioElementLeverageData;
 }
+
+
+/**
+ * @export
+ */
+export const PortfolioPortfolioElementLeverageTypeEnum = {
+    Leverage: 'leverage'
+} as const;
+export type PortfolioPortfolioElementLeverageTypeEnum = typeof PortfolioPortfolioElementLeverageTypeEnum[keyof typeof PortfolioPortfolioElementLeverageTypeEnum];
+
 
 /**
  * Check if a given object implements the PortfolioPortfolioElementLeverage interface.

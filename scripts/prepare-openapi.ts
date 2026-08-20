@@ -67,6 +67,33 @@ function rewriteSecurityRequirements(value: unknown, namespace: string): unknown
   });
 }
 
+function namespaceReference(reference: string, namespace: string): string {
+  const match = reference.match(/^#\/components\/([^/]+)\/([^/]+)$/);
+
+  if (match) {
+    return `#/components/${match[1]}/${namespace}_${match[2]}`;
+  }
+
+  if (!reference.startsWith("#")) {
+    throw new TypeError(`Unsupported external reference: ${reference}`);
+  }
+
+  return reference;
+}
+
+function rewriteDiscriminatorMapping(value: unknown, namespace: string): unknown {
+  if (!isRecord(value)) {
+    return value;
+  }
+
+  return Object.fromEntries(
+    Object.entries(value).map(([name, reference]) => [
+      name,
+      typeof reference === "string" ? namespaceReference(reference, namespace) : reference,
+    ]),
+  );
+}
+
 function rewriteReferences(value: unknown, namespace: string): unknown {
   if (Array.isArray(value)) {
     return value.map((item) => rewriteReferences(item, namespace));
@@ -79,24 +106,48 @@ function rewriteReferences(value: unknown, namespace: string): unknown {
   return Object.fromEntries(
     Object.entries(value).map(([key, item]) => {
       if (key === "$ref" && typeof item === "string") {
-        const match = item.match(/^#\/components\/([^/]+)\/([^/]+)$/);
-
-        if (match) {
-          return [key, `#/components/${match[1]}/${namespace}_${match[2]}`];
-        }
-
-        if (!item.startsWith("#")) {
-          throw new TypeError(`Unsupported external reference: ${item}`);
-        }
+        return [key, namespaceReference(item, namespace)];
       }
 
       if (key === "security") {
         return [key, rewriteSecurityRequirements(item, namespace)];
       }
 
+      if (key === "mapping") {
+        return [key, rewriteDiscriminatorMapping(item, namespace)];
+      }
+
       return [key, rewriteReferences(item, namespace)];
     }),
   );
+}
+
+function normalizeCompositeSchema(value: unknown): unknown {
+  if (Array.isArray(value)) {
+    return value.map(normalizeCompositeSchema);
+  }
+
+  if (!isRecord(value)) {
+    return value;
+  }
+
+  const normalized = Object.fromEntries(
+    Object.entries(value)
+      .filter(([key]) => key !== "const")
+      .map(([key, item]) => [key, normalizeCompositeSchema(item)]),
+  );
+
+  if (value.const !== undefined) {
+    normalized.enum = [value.const];
+  }
+
+  if (normalized.type === "array" && isRecord(normalized.items) && normalized.items.type === "array") {
+    if (normalized.items.items === undefined) {
+      normalized.items = { ...normalized.items, items: {} };
+    }
+  }
+
+  return normalized;
 }
 
 function namespacedComponents(document: OpenApiDocument, namespace: string): OpenApiDocument {
@@ -163,7 +214,7 @@ for (const sourceFile of sourceFiles) {
     Bun.YAML.parse(await Bun.file(join(OPENAPI_DIRECTORY, sourceFile)).text()),
     sourceFile,
   );
-  const normalized = asRecord(rewriteReferences(document, tag), sourceFile);
+  const normalized = asRecord(normalizeCompositeSchema(rewriteReferences(document, tag)), sourceFile);
   const server = sourceServer(document, sourceFile);
   const sourcePaths = asRecord(normalized.paths, `${sourceFile}.paths`);
 
@@ -209,7 +260,7 @@ const rootDocument = {
   components,
 };
 
-await Bun.write(OUTPUT_PATH, Bun.YAML.stringify(rootDocument, null, 2));
+await Bun.write(OUTPUT_PATH, Bun.YAML.stringify(rootDocument, null, 2).replace(/[ \t]+$/gm, ""));
 
 console.log(
   `Prepared ${relative(process.cwd(), OUTPUT_PATH)} from ${sourceFiles.length} source specifications.`,

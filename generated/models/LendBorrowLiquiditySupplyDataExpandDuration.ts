@@ -27,7 +27,7 @@ export function LendBorrowLiquiditySupplyDataExpandDurationFromJSONTyped(json: a
     if ((json === undefined) || (json === null)) {
         return json;
     }
-    return { ...numberFromJSONTyped(json, true), ...stringFromJSONTyped(json, true) };
+    return json as LendBorrowLiquiditySupplyDataExpandDuration;
 }
 
 export function LendBorrowLiquiditySupplyDataExpandDurationToJSON(value?: LendBorrowLiquiditySupplyDataExpandDuration | null): any {
@@ -38,13 +38,6 @@ export function LendBorrowLiquiditySupplyDataExpandDurationToJSON(value?: LendBo
         return null;
     }
 
-    if (instanceOfnumber(value)) {
-        return numberToJSON(value as number);
-    }
-    if (instanceOfstring(value)) {
-        return stringToJSON(value as string);
-    }
-
-    return {};
+    return value;
 }
 

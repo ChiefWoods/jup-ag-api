@@ -27,7 +27,7 @@ export function PredictionMarketResolveAtFromJSONTyped(json: any, ignoreDiscrimi
     if ((json === undefined) || (json === null)) {
         return json;
     }
-    return { ...numberFromJSONTyped(json, true), ...stringFromJSONTyped(json, true) };
+    return json as PredictionMarketResolveAt;
 }
 
 export function PredictionMarketResolveAtToJSON(value?: PredictionMarketResolveAt | null): any {
@@ -38,13 +38,6 @@ export function PredictionMarketResolveAtToJSON(value?: PredictionMarketResolveA
         return null;
     }
 
-    if (instanceOfnumber(value)) {
-        return numberToJSON(value as number);
-    }
-    if (instanceOfstring(value)) {
-        return stringToJSON(value as string);
-    }
-
-    return {};
+    return value;
 }
 

@@ -49,7 +49,7 @@ export interface PortfolioPortfolioAssetToken {
      * @type {string}
      * @memberof PortfolioPortfolioAssetToken
      */
-    type: string;
+    type: PortfolioPortfolioAssetTokenTypeEnum;
     /**
      * 
      * @type {PortfolioNetworkId}
@@ -105,6 +105,16 @@ export interface PortfolioPortfolioAssetToken {
      */
     data: PortfolioPortfolioAssetTokenData;
 }
+
+
+/**
+ * @export
+ */
+export const PortfolioPortfolioAssetTokenTypeEnum = {
+    Token: 'token'
+} as const;
+export type PortfolioPortfolioAssetTokenTypeEnum = typeof PortfolioPortfolioAssetTokenTypeEnum[keyof typeof PortfolioPortfolioAssetTokenTypeEnum];
+
 
 /**
  * Check if a given object implements the PortfolioPortfolioAssetToken interface.

@@ -33,16 +33,16 @@ export interface PredictionV1OrderbookMarketIdGet200Response {
     no: Array<Array<number>>;
     /**
      * YES-side levels with price as decimal dollar string. Each entry is a [price_string, size] tuple, e.g. ["0.0100", 346014].
-     * @type {Array<Array>}
+     * @type {Array<Array<any>>}
      * @memberof PredictionV1OrderbookMarketIdGet200Response
      */
-    yesDollars: Array<Array>;
+    yesDollars: Array<Array<any>>;
     /**
      * NO-side levels with price as decimal dollar string. Each entry is a [price_string, size] tuple, e.g. ["0.0100", 219].
-     * @type {Array<Array>}
+     * @type {Array<Array<any>>}
      * @memberof PredictionV1OrderbookMarketIdGet200Response
      */
-    noDollars: Array<Array>;
+    noDollars: Array<Array<any>>;
 }
 
 /**

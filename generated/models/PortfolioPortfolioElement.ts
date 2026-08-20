@@ -53,7 +53,7 @@ import {
  * 
  * @export
  */
-export type PortfolioPortfolioElement = { type: 'borrowlend' } & PortfolioElementBorrowLend | { type: 'leverage' } & PortfolioElementLeverage | { type: 'liquidity' } & PortfolioElementLiquidity | { type: 'multiple' } & PortfolioElementMultiple | { type: 'trade' } & PortfolioElementTrade;
+export type PortfolioPortfolioElement = { type: 'borrowlend' } & PortfolioPortfolioElementBorrowLend | { type: 'leverage' } & PortfolioPortfolioElementLeverage | { type: 'liquidity' } & PortfolioPortfolioElementLiquidity | { type: 'multiple' } & PortfolioPortfolioElementMultiple | { type: 'trade' } & PortfolioPortfolioElementTrade;
 
 export function PortfolioPortfolioElementFromJSON(json: any): PortfolioPortfolioElement {
     return PortfolioPortfolioElementFromJSONTyped(json, false);
@@ -65,15 +65,15 @@ export function PortfolioPortfolioElementFromJSONTyped(json: any, ignoreDiscrimi
     }
     switch (json['type']) {
         case 'borrowlend':
-            return {...PortfolioElementBorrowLendFromJSONTyped(json, true), type: 'borrowlend'};
+            return {...PortfolioPortfolioElementBorrowLendFromJSONTyped(json, true), type: 'borrowlend'};
         case 'leverage':
-            return {...PortfolioElementLeverageFromJSONTyped(json, true), type: 'leverage'};
+            return {...PortfolioPortfolioElementLeverageFromJSONTyped(json, true), type: 'leverage'};
         case 'liquidity':
-            return {...PortfolioElementLiquidityFromJSONTyped(json, true), type: 'liquidity'};
+            return {...PortfolioPortfolioElementLiquidityFromJSONTyped(json, true), type: 'liquidity'};
         case 'multiple':
-            return {...PortfolioElementMultipleFromJSONTyped(json, true), type: 'multiple'};
+            return {...PortfolioPortfolioElementMultipleFromJSONTyped(json, true), type: 'multiple'};
         case 'trade':
-            return {...PortfolioElementTradeFromJSONTyped(json, true), type: 'trade'};
+            return {...PortfolioPortfolioElementTradeFromJSONTyped(json, true), type: 'trade'};
         default:
             throw new Error(`No variant of PortfolioPortfolioElement exists with 'type=${json['type']}'`);
     }
@@ -88,15 +88,15 @@ export function PortfolioPortfolioElementToJSON(value?: PortfolioPortfolioElemen
     }
     switch (value['type']) {
         case 'borrowlend':
-            return PortfolioElementBorrowLendToJSON(value);
+            return PortfolioPortfolioElementBorrowLendToJSON(value);
         case 'leverage':
-            return PortfolioElementLeverageToJSON(value);
+            return PortfolioPortfolioElementLeverageToJSON(value);
         case 'liquidity':
-            return PortfolioElementLiquidityToJSON(value);
+            return PortfolioPortfolioElementLiquidityToJSON(value);
         case 'multiple':
-            return PortfolioElementMultipleToJSON(value);
+            return PortfolioPortfolioElementMultipleToJSON(value);
         case 'trade':
-            return PortfolioElementTradeToJSON(value);
+            return PortfolioPortfolioElementTradeToJSON(value);
         default:
             throw new Error(`No variant of PortfolioPortfolioElement exists with 'type=${value['type']}'`);
     }

@@ -43,7 +43,7 @@ export interface PortfolioPortfolioElementMultiple {
      * @type {string}
      * @memberof PortfolioPortfolioElementMultiple
      */
-    type: string;
+    type: PortfolioPortfolioElementMultipleTypeEnum;
     /**
      * 
      * @type {PortfolioNetworkId}
@@ -93,6 +93,16 @@ export interface PortfolioPortfolioElementMultiple {
      */
     data: PortfolioPortfolioElementMultipleData;
 }
+
+
+/**
+ * @export
+ */
+export const PortfolioPortfolioElementMultipleTypeEnum = {
+    Multiple: 'multiple'
+} as const;
+export type PortfolioPortfolioElementMultipleTypeEnum = typeof PortfolioPortfolioElementMultipleTypeEnum[keyof typeof PortfolioPortfolioElementMultipleTypeEnum];
+
 
 /**
  * Check if a given object implements the PortfolioPortfolioElementMultiple interface.

@@ -43,7 +43,7 @@ export interface PortfolioPortfolioElementBorrowLend {
      * @type {string}
      * @memberof PortfolioPortfolioElementBorrowLend
      */
-    type: string;
+    type: PortfolioPortfolioElementBorrowLendTypeEnum;
     /**
      * 
      * @type {PortfolioNetworkId}
@@ -93,6 +93,16 @@ export interface PortfolioPortfolioElementBorrowLend {
      */
     data: PortfolioPortfolioElementBorrowLendData;
 }
+
+
+/**
+ * @export
+ */
+export const PortfolioPortfolioElementBorrowLendTypeEnum = {
+    Borrowlend: 'borrowlend'
+} as const;
+export type PortfolioPortfolioElementBorrowLendTypeEnum = typeof PortfolioPortfolioElementBorrowLendTypeEnum[keyof typeof PortfolioPortfolioElementBorrowLendTypeEnum];
+
 
 /**
  * Check if a given object implements the PortfolioPortfolioElementBorrowLend interface.
