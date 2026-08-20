@@ -1,6 +1,7 @@
 import { join } from "node:path";
 
-const MODEL_DIRECTORY = Bun.env.GENERATED_DIRECTORY ?? join(import.meta.dir, "..", "generated", "models");
+const MODEL_DIRECTORY =
+  Bun.env.GENERATED_DIRECTORY ?? join(import.meta.dir, "..", "generated", "models");
 const scalarUnionPattern = /export type (\w+) = (?:number \| string|string \| number);/g;
 
 for await (const file of new Bun.Glob("*.ts").scan({ cwd: MODEL_DIRECTORY })) {
