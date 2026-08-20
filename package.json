@@ -34,6 +34,7 @@
     "generate": "rm -rf generated && bun run prepare-openapi && bun run openapi-gen",
     "prepare": "husky",
     "release": "bun run build && changeset publish",
+    "typecheck": "tsc --noEmit",
     "version": "changeset version"
   },
   "devDependencies": {
@@ -45,6 +46,6 @@
     "oxfmt": "^0.61.0",
     "oxlint": "^1.76.0",
     "tsdown": "^0.22.14",
-    "typescript": "^7.0.2"
+    "typescript": "7.0.2"
   }
 }
