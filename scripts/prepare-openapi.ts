@@ -67,29 +67,29 @@ function rewriteSecurityRequirements(value: unknown, namespace: string): unknown
   });
 }
 
-function namespaceReference(reference: string, namespace: string): string {
-  const match = reference.match(/^#\/components\/([^/]+)\/([^/]+)$/);
+function rewriteComponentPointer(pointer: string, namespace: string): string {
+  const match = pointer.match(/^#\/components\/([^/]+)\/([^/]+)$/);
 
   if (match) {
     return `#/components/${match[1]}/${namespace}_${match[2]}`;
   }
 
-  if (!reference.startsWith("#")) {
-    throw new TypeError(`Unsupported external reference: ${reference}`);
+  if (!pointer.startsWith("#")) {
+    throw new TypeError(`Unsupported external reference: ${pointer}`);
   }
 
-  return reference;
+  return pointer;
 }
 
-function rewriteDiscriminatorMapping(value: unknown, namespace: string): unknown {
-  if (!isRecord(value)) {
-    return value;
+function rewriteDiscriminatorMapping(mapping: unknown, namespace: string): unknown {
+  if (!isRecord(mapping)) {
+    return mapping;
   }
 
   return Object.fromEntries(
-    Object.entries(value).map(([name, reference]) => [
+    Object.entries(mapping).map(([name, target]) => [
       name,
-      typeof reference === "string" ? namespaceReference(reference, namespace) : reference,
+      typeof target === "string" ? rewriteComponentPointer(target, namespace) : target,
     ]),
   );
 }
@@ -106,15 +106,27 @@ function rewriteReferences(value: unknown, namespace: string): unknown {
   return Object.fromEntries(
     Object.entries(value).map(([key, item]) => {
       if (key === "$ref" && typeof item === "string") {
-        return [key, namespaceReference(item, namespace)];
+        return [key, rewriteComponentPointer(item, namespace)];
       }
 
       if (key === "security") {
         return [key, rewriteSecurityRequirements(item, namespace)];
       }
 
-      if (key === "mapping") {
-        return [key, rewriteDiscriminatorMapping(item, namespace)];
+      if (key === "discriminator" && isRecord(item)) {
+        const rewritten = rewriteReferences(item, namespace);
+
+        if (!isRecord(rewritten) || item.mapping === undefined) {
+          return [key, rewritten];
+        }
+
+        return [
+          key,
+          {
+            ...rewritten,
+            mapping: rewriteDiscriminatorMapping(item.mapping, namespace),
+          },
+        ];
       }
 
       return [key, rewriteReferences(item, namespace)];

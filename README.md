@@ -8,13 +8,29 @@
 
 ## Installation
 
-Install the package:
+### TypeScript
 
 ```bash
 bun add @jup-ag/api
 ```
 
+### Rust
+
+```bash
+cargo add jup-ag-api
+```
+
+TLS defaults to `native-tls`. For rustls:
+
+```bash
+cargo add jup-ag-api --no-default-features --features rustls
+```
+
+In Rust source the crate is imported as `jup_ag_api` (hyphens are not valid in identifiers).
+
 ## Usage
+
+### TypeScript
 
 ```ts
 import { JupiterApi } from "@jup-ag/api";
@@ -31,6 +47,41 @@ const order = await jupiter.swap.v2.getOrder({
 });
 ```
 
+### Rust
+
+```rust
+use jup_ag_api::apis::configuration::{ApiKey, Configuration};
+use jup_ag_api::apis::swap_v2_api;
+
+let config = Configuration {
+    api_key: Some(ApiKey {
+        prefix: None,
+        key: "your-jupiter-api-key".to_owned(),
+    }),
+    ..Configuration::default()
+};
+
+let order = swap_v2_api::get_order(
+    &config,
+    "So11111111111111111111111111111111111111112",
+    "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+    "1000000",
+    None,
+    None,
+    None,
+    Some(100),
+    None,
+    None,
+    None,
+    None,
+    None,
+    None,
+    None,
+    None,
+)
+.await?;
+```
+
 ## Developing
 
 This repository uses Bun. Install its dependencies with:
@@ -43,8 +94,8 @@ bun install
 
 The version-controlled source specifications live under `openapi/`, preserving
 their Jupiter product and version directory structure. `openapi/jupiter.yaml` is
-the derived composite input consumed by the TypeScript generator. Upstream
-specification updates are copied into this directory and reviewed here.
+the derived composite input consumed by the TypeScript and Rust generators.
+Upstream specification updates are copied into this directory and reviewed here.
 
 To add a new OpenAPI specification to the client:
 
@@ -54,8 +105,8 @@ To add a new OpenAPI specification to the client:
 3. Add the corresponding service key and default URL to
    `clients/ts/config.ts`, then expose its generated API from
    `clients/ts/JupiterApi.ts` in the same nested structure as `openapi/`.
-4. Run `bun run generate` to rebuild the composite specification and the typed
-   client under `generated/ts`.
+4. Run `bun run generate` to rebuild the composite specification and the
+   TypeScript and Rust clients under `generated/ts` and `generated/rust`.
 5. Run the validation commands below before committing the change.
 
 Use these commands during development:
@@ -64,9 +115,11 @@ Use these commands during development:
 # Refresh only the composite root specification.
 bun run prepare-openapi
 
+# Generate a single client from the existing composite root.
 bun run openapi-gen:ts
+bun run openapi-gen:rust
 
-# Clean generated output, prepare the root, and generate the client.
+# Clean generated output, prepare the root, and generate all clients in parallel.
 bun run generate
 
 # Apply lint fixes and verify formatting.

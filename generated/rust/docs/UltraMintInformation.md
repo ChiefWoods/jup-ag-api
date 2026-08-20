@@ -1,0 +1,55 @@
+# UltraMintInformation
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**id** | Option<**String**> | The token's mint address | [optional]
+**name** | Option<**String**> |  | [optional]
+**symbol** | Option<**String**> |  | [optional]
+**icon** | Option<**String**> | URL to the token's logo image | [optional]
+**decimals** | Option<**f64**> |  | [optional]
+**token_program** | Option<**String**> | The token program address (SPL Token or Token-2022) | [optional]
+**created_at** | Option<**chrono::DateTime<chrono::FixedOffset>**> | Token creation timestamp | [optional]
+**twitter** | Option<**String**> |  | [optional]
+**telegram** | Option<**String**> |  | [optional]
+**website** | Option<**String**> |  | [optional]
+**discord** | Option<**String**> |  | [optional]
+**instagram** | Option<**String**> |  | [optional]
+**tiktok** | Option<**String**> |  | [optional]
+**other_url** | Option<**String**> |  | [optional]
+**dev** | Option<**String**> | The token's developer wallet address | [optional]
+**mint_authority** | Option<**String**> | Mint authority address (present when mint authority is not disabled) | [optional]
+**freeze_authority** | Option<**String**> | Freeze authority address (present when freeze authority is not disabled) | [optional]
+**issuer** | Option<**String**> | Token issuer name (e.g., \"Circle\" for USDC) | [optional]
+**circ_supply** | Option<**f64**> |  | [optional]
+**total_supply** | Option<**f64**> |  | [optional]
+**launchpad** | Option<**String**> |  | [optional]
+**partner_config** | Option<**String**> |  | [optional]
+**graduated_pool** | Option<**String**> |  | [optional]
+**graduated_at** | Option<**String**> |  | [optional]
+**holder_count** | Option<**f64**> |  | [optional]
+**fdv** | Option<**f64**> | Fully diluted valuation in USD | [optional]
+**mcap** | Option<**f64**> | Market cap in USD | [optional]
+**usd_price** | Option<**f64**> |  | [optional]
+**price_block_id** | Option<**f64**> | Solana block number for the price data point | [optional]
+**liquidity** | Option<**f64**> | Total liquidity in USD | [optional]
+**fees** | Option<**f64**> | Trading fees in USD | [optional]
+**apy** | Option<[**models::TokensV2MintInformationApy**](TokensV2MintInformationApy.md)> |  | [optional]
+**stats5m** | Option<[**models::UltraSwapStats**](UltraSwapStats.md)> |  | [optional]
+**stats1h** | Option<[**models::UltraSwapStats**](UltraSwapStats.md)> |  | [optional]
+**stats6h** | Option<[**models::UltraSwapStats**](UltraSwapStats.md)> |  | [optional]
+**stats24h** | Option<[**models::UltraSwapStats**](UltraSwapStats.md)> |  | [optional]
+**stats7d** | Option<[**models::UltraSwapStats**](UltraSwapStats.md)> |  | [optional]
+**stats30d** | Option<[**models::UltraSwapStats**](UltraSwapStats.md)> |  | [optional]
+**first_pool** | Option<[**models::TokensV2MintInformationFirstPool**](TokensV2MintInformationFirstPool.md)> |  | [optional]
+**audit** | Option<[**models::UltraMintInformationAudit**](UltraMintInformationAudit.md)> |  | [optional]
+**organic_score** | Option<**f64**> | Organic trading activity score (0-100) | [optional]
+**organic_score_label** | Option<**OrganicScoreLabel**> |  (enum: high, medium, low) | [optional]
+**is_verified** | Option<**bool**> |  | [optional]
+**tags** | Option<**Vec<String>**> |  | [optional]
+**updated_at** | Option<**chrono::DateTime<chrono::FixedOffset>**> | Last data update timestamp | [optional]
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

@@ -1,5 +1,7 @@
 node_modules
 dist
+generated/rust/target
+generated/rust/Cargo.lock
 .DS_Store
 .env
 .idea
