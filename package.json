@@ -23,7 +23,7 @@
     }
   },
   "scripts": {
-    "build": "bun run generate && tsdown",
+    "build": "bun run generate:js && tsdown",
     "changeset": "changeset",
     "format": "oxfmt --write .",
     "format:check": "oxfmt --check .",
@@ -32,6 +32,8 @@
     "prepare-openapi": "bun run scripts/prepare-openapi.ts",
     "openapi-gen:ts": "openapi-generator-cli generate -i openapi/jupiter.yaml -o generated/ts -g typescript-fetch --skip-validate-spec && bun run scripts/fix-generated-openapi.ts",
     "openapi-gen:rust": "openapi-generator-cli --openapitools openapitools.rust.json generate -i openapi/jupiter.yaml -o generated/rust -g rust --skip-validate-spec --additional-properties=packageName=jup-ag-api-generated,supportAsync=true,hideGenerationTimestamp=true && bun run scripts/generate-rust-client.ts",
+    "generate:js": "rm -rf generated/ts && bun run prepare-openapi && bun run openapi-gen:ts",
+    "generate:rust": "rm -rf generated/rust && bun run prepare-openapi && bun run openapi-gen:rust",
     "generate": "rm -rf generated && bun run prepare-openapi && concurrently --kill-others-on-fail \"npm:openapi-gen:*\"",
     "prepare": "husky",
     "release": "bun run build && changeset publish",

@@ -104,7 +104,7 @@ To add a new OpenAPI specification to the client:
    `clients/ts/config.ts` and `clients/rust/src/config.rs`, then expose
    its generated API from `clients/ts/JupiterApi.ts` and
    `clients/rust/src/client.rs` in the same nested structure as `openapi/`.
-4. Run `bun run generate` to rebuild the composite specification and the
+4. Run `bun run generate:js` and `bun run generate:rust` to rebuild the
    TypeScript and Rust clients under `generated/ts` and `generated/rust`.
    Rust method wrappers on `JupiterClient` are regenerated from
    `generated/rust` by `scripts/generate-rust-client.ts`.
@@ -116,9 +116,9 @@ Use these commands during development:
 # Refresh only the composite root specification.
 bun run prepare-openapi
 
-# Generate a single client from the existing composite root.
-bun run openapi-gen:ts
-bun run openapi-gen:rust
+# Clean, prepare, and generate an individual client.
+bun run generate:js
+bun run generate:rust
 
 # Compile the Rust wrapper against generated bindings.
 cargo check -p jup-ag-api
@@ -130,7 +130,7 @@ bun run generate
 bun run lint
 bun run format:check
 
-# Regenerate and compile the published ESM, CJS, and declaration output.
+# Generate the TypeScript client, then compile the published ESM, CJS, and declaration output.
 bun run build
 ```
 
