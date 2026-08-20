@@ -153,7 +153,11 @@ function normalizeCompositeSchema(value: unknown): unknown {
     normalized.enum = [value.const];
   }
 
-  if (normalized.type === "array" && isRecord(normalized.items) && normalized.items.type === "array") {
+  if (
+    normalized.type === "array" &&
+    isRecord(normalized.items) &&
+    normalized.items.type === "array"
+  ) {
     if (normalized.items.items === undefined) {
       normalized.items = { ...normalized.items, items: {} };
     }
@@ -226,7 +230,10 @@ for (const sourceFile of sourceFiles) {
     Bun.YAML.parse(await Bun.file(join(OPENAPI_DIRECTORY, sourceFile)).text()),
     sourceFile,
   );
-  const normalized = asRecord(normalizeCompositeSchema(rewriteReferences(document, tag)), sourceFile);
+  const normalized = asRecord(
+    normalizeCompositeSchema(rewriteReferences(document, tag)),
+    sourceFile,
+  );
   const server = sourceServer(document, sourceFile);
   const sourcePaths = asRecord(normalized.paths, `${sourceFile}.paths`);
 
