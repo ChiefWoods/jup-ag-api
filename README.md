@@ -80,6 +80,5 @@ bun run build
 
 ### Releases
 
-For a user-facing change, run `bun run changeset` and record the appropriate
-version bump. After the change is merged, CI creates or updates a release PR.
-Merge that PR, then tag the resulting version to trigger trusted publication.
+Bump the version in `package.json`, then tag that version (`v6.0.49`, etc.) to
+trigger trusted publication.
