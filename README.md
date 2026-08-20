@@ -50,36 +50,34 @@ const order = await jupiter.swap.v2.getOrder({
 ### Rust
 
 ```rust
-use jup_ag_api::apis::configuration::{ApiKey, Configuration};
-use jup_ag_api::apis::swap_v2_api;
+use jup_ag_api::{JupiterClient, JupiterClientOptions};
 
-let config = Configuration {
-    api_key: Some(ApiKey {
-        prefix: None,
-        key: "your-jupiter-api-key".to_owned(),
-    }),
-    ..Configuration::default()
-};
+let jupiter = JupiterClient::new(JupiterClientOptions {
+    api_key: Some("your-jupiter-api-key".to_owned()),
+    ..JupiterClientOptions::default()
+});
 
-let order = swap_v2_api::get_order(
-    &config,
-    "So11111111111111111111111111111111111111112",
-    "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
-    "1000000",
-    None,
-    None,
-    None,
-    Some(100),
-    None,
-    None,
-    None,
-    None,
-    None,
-    None,
-    None,
-    None,
-)
-.await?;
+let order = jupiter
+    .swap
+    .v2
+    .get_order(
+        "So11111111111111111111111111111111111111112",
+        "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+        "1000000",
+        None,
+        None,
+        None,
+        Some(100),
+        None,
+        None,
+        None,
+        None,
+        None,
+        None,
+        None,
+        None,
+    )
+    .await?;
 ```
 
 ## Developing
@@ -103,10 +101,13 @@ To add a new OpenAPI specification to the client:
 2. Run `bun run prepare-openapi`. It discovers every source YAML, derives its
    normalized tag from the path, and refreshes `openapi/jupiter.yaml`.
 3. Add the corresponding service key and default URL to
-   `clients/ts/config.ts`, then expose its generated API from
-   `clients/ts/JupiterApi.ts` in the same nested structure as `openapi/`.
+   `clients/ts/config.ts` and `clients/rust/src/config.rs`, then expose
+   its generated API from `clients/ts/JupiterApi.ts` and
+   `clients/rust/src/client.rs` in the same nested structure as `openapi/`.
 4. Run `bun run generate` to rebuild the composite specification and the
    TypeScript and Rust clients under `generated/ts` and `generated/rust`.
+   Rust method wrappers on `JupiterClient` are regenerated from
+   `generated/rust` by `scripts/generate-rust-client.ts`.
 5. Run the validation commands below before committing the change.
 
 Use these commands during development:
@@ -118,6 +119,9 @@ bun run prepare-openapi
 # Generate a single client from the existing composite root.
 bun run openapi-gen:ts
 bun run openapi-gen:rust
+
+# Compile the Rust wrapper against generated bindings.
+cargo check -p jup-ag-api
 
 # Clean generated output, prepare the root, and generate all clients in parallel.
 bun run generate

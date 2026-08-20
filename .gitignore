@@ -1,5 +1,9 @@
 node_modules
 dist
+/target
+/Cargo.lock
+clients/rust/target
+clients/rust/Cargo.lock
 generated/rust/target
 generated/rust/Cargo.lock
 .DS_Store

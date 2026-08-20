@@ -1,5 +1,5 @@
 [package]
-name = "jup-ag-api"
+name = "jup-ag-api-generated"
 version = "1.0.0"
 authors = ["OpenAPI Generator team and contributors"]
 description = "Generated composite Jupiter API specification. Do not edit manually."
