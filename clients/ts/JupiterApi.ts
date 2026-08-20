@@ -17,7 +17,7 @@ import {
   TriggerV1Api,
   TriggerV2Api,
   UltraApi,
-} from "../../generated/apis";
+} from "../../generated/ts/apis";
 import { createConfiguration, type JupiterApiOptions } from "./config";
 
 /**

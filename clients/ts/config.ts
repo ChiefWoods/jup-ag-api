@@ -1,4 +1,4 @@
-import { Configuration, type FetchAPI, type HTTPHeaders } from "../../generated/runtime";
+import { Configuration, type FetchAPI, type HTTPHeaders } from "../../generated/ts/runtime";
 
 export type JupiterApiService =
   | "lend"

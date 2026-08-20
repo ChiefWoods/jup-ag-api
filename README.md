@@ -52,10 +52,10 @@ To add a new OpenAPI specification to the client:
 2. Run `bun run prepare-openapi`. It discovers every source YAML, derives its
    normalized tag from the path, and refreshes `openapi/jupiter.yaml`.
 3. Add the corresponding service key and default URL to
-   `src/client/config.ts`, then expose its generated API from
-   `src/client/JupiterApi.ts` in the same nested structure as `openapi/`.
+   `clients/ts/config.ts`, then expose its generated API from
+   `clients/ts/JupiterApi.ts` in the same nested structure as `openapi/`.
 4. Run `bun run generate` to rebuild the composite specification and the typed
-   client under `generated/`.
+   client under `generated/ts`.
 5. Run the validation commands below before committing the change.
 
 Use these commands during development:
@@ -64,8 +64,7 @@ Use these commands during development:
 # Refresh only the composite root specification.
 bun run prepare-openapi
 
-# Generate from the existing composite root.
-bun run openapi-gen
+bun run openapi-gen:ts
 
 # Clean generated output, prepare the root, and generate the client.
 bun run generate
