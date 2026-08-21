@@ -1,5 +1,7 @@
 # Jupiter API Client
 
+[![npm version](https://img.shields.io/npm/v/jupiter-api-ts)](https://www.npmjs.com/package/jupiter-api-ts)
+
 ## Table of Contents
 
 - [Installation](#installation)
