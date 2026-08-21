@@ -1,8 +1,6 @@
-export { JupiterApi } from "./client";
-export type { JupiterApiOptions, JupiterApiService } from "./client";
-
-/**
- * Generated APIs and models. Kept under a namespace to avoid flattening model
- * names that may collide as additional Jupiter specifications are added.
- */
-export * as Generated from "../generated";
+export { JupiterApi } from "../generated/jupiter/sdk.gen";
+export { JupiterTxApi } from "../generated/tx/sdk.gen";
+export { createClient as createJupiterApiClient } from "../generated/jupiter/client";
+export { createClient as createJupiterTxApiClient } from "../generated/tx/client";
+export type * as JupiterApiTypes from "../generated/jupiter/types.gen";
+export type * as JupiterTxApiTypes from "../generated/tx/types.gen";

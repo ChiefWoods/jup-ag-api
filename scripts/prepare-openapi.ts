@@ -4,6 +4,8 @@ type OpenApiDocument = Record<string, unknown>;
 
 const OPENAPI_DIRECTORY = join(import.meta.dir, "..", "openapi");
 const OUTPUT_PATH = join(OPENAPI_DIRECTORY, "jupiter.yaml");
+const TRANSACTION_SOURCE_PATH = "transaction/transaction.yaml";
+const TRANSACTION_OUTPUT_PATH = join(OPENAPI_DIRECTORY, "transaction.yaml");
 const HTTP_METHODS = new Set(["delete", "get", "head", "options", "patch", "post", "put", "trace"]);
 
 function isRecord(value: unknown): value is OpenApiDocument {
@@ -202,7 +204,7 @@ function operationsForPath(
 
 const sourceFiles: string[] = [];
 for await (const file of new Bun.Glob("**/*.yaml").scan({ cwd: OPENAPI_DIRECTORY })) {
-  if (file !== "jupiter.yaml") {
+  if (file !== "jupiter.yaml" && file !== "transaction.yaml" && file !== TRANSACTION_SOURCE_PATH) {
     sourceFiles.push(file);
   }
 }
@@ -258,10 +260,7 @@ const rootDocument = {
     version: "1.0.0",
     description: "Generated composite Jupiter API specification. Do not edit manually.",
   },
-  servers: [
-    { url: "https://api.jup.ag", description: "Jupiter API" },
-    { url: "https://tx.jup.ag", description: "Jupiter transaction API" },
-  ],
+  servers: [{ url: "https://api.jup.ag", description: "Jupiter API" }],
   tags,
   paths,
   components,
@@ -269,6 +268,17 @@ const rootDocument = {
 
 await Bun.write(OUTPUT_PATH, Bun.YAML.stringify(rootDocument, null, 2).replace(/[ \t]+$/gm, ""));
 
+const transactionDocument = asRecord(
+  Bun.YAML.parse(await Bun.file(join(OPENAPI_DIRECTORY, TRANSACTION_SOURCE_PATH)).text()),
+  TRANSACTION_SOURCE_PATH,
+);
+const normalizedTransactionDocument = normalizeCompositeSchema(transactionDocument);
+
+await Bun.write(
+  TRANSACTION_OUTPUT_PATH,
+  Bun.YAML.stringify(normalizedTransactionDocument, null, 2).replace(/[ \t]+$/gm, ""),
+);
+
 console.log(
-  `Prepared ${relative(process.cwd(), OUTPUT_PATH)} from ${sourceFiles.length} source specifications.`,
+  `Prepared ${relative(process.cwd(), OUTPUT_PATH)} from ${sourceFiles.length} source specifications and ${relative(process.cwd(), TRANSACTION_OUTPUT_PATH)}.`,
 );
