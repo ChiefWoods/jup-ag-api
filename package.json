@@ -34,7 +34,6 @@
     "generate": "rm -rf generated && bun run prepare-openapi && bun run openapi-gen",
     "prepare": "husky",
     "prepublishOnly": "bun run typecheck && bun run build",
-    "release": "bun run build && changeset publish",
     "typecheck": "tsc --noEmit",
     "version": "changeset version"
   },
