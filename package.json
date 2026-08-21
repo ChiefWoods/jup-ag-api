@@ -33,7 +33,6 @@
     "openapi-gen": "openapi-generator-cli generate -i openapi/jupiter.yaml -o generated -g typescript-fetch --skip-validate-spec && bun run scripts/fix-generated-openapi.ts",
     "generate": "rm -rf generated && bun run prepare-openapi && bun run openapi-gen",
     "prepare": "husky",
-    "release": "bun run build && changeset publish",
     "typecheck": "tsc --noEmit",
     "version": "changeset version"
   },
