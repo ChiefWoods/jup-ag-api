@@ -82,5 +82,13 @@ bun run build
 
 ### Releases
 
-Bump the version in `package.json`, then tag that version (`v6.0.49`, etc.) to
-trigger trusted publication.
+Create a changeset for a publishable change and apply the version locally:
+
+```bash
+bun run changeset
+bun run version
+```
+
+Commit the version changes, then create and push a `v*` tag for that version.
+The publish workflow builds the package and publishes it to npm using npm trusted
+publishing; no local `release` command is needed.
