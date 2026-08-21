@@ -23,15 +23,15 @@
     }
   },
   "scripts": {
-    "build": "bun run generate && tsdown",
+    "build": "bun run generate:ts && tsdown",
     "changeset": "changeset",
     "format": "oxfmt --write .",
     "format:check": "oxfmt --check .",
     "lint": "oxlint --fix",
     "lint:check": "oxlint",
     "prepare-openapi": "bun run scripts/prepare-openapi.ts",
-    "openapi-gen": "openapi-ts -f openapi-ts.config.ts",
-    "generate": "rm -rf generated && bun run prepare-openapi && bun run openapi-gen",
+    "openapi-gen:ts": "openapi-ts -f openapi-ts.config.ts",
+    "generate:ts": "rm -rf generated/ts && bun run prepare-openapi && bun run openapi-gen:ts",
     "prepare": "husky",
     "prepublishOnly": "bun run typecheck && bun run build",
     "typecheck": "tsc --noEmit",

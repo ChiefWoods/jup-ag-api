@@ -89,7 +89,7 @@ To add a new OpenAPI specification to the client:
 3. Add the product tag path to `openapi-ts.config.ts` so `JupiterApi` exposes
    the new API in the same nested structure as `openapi/`. A new host requires
    a separate Hey API generation target and a separately named SDK class.
-4. Run `bun run generate` to rebuild both typed clients under `generated/`.
+4. Run `bun run generate:ts` to rebuild both typed clients under `generated/ts/`.
 5. Run the validation commands below before committing the change.
 
 Use these commands during development:
@@ -99,10 +99,10 @@ Use these commands during development:
 bun run prepare-openapi
 
 # Generate from the existing composite root.
-bun run openapi-gen
+bun run openapi-gen:ts
 
 # Clean generated output, prepare the root, and generate the client.
-bun run generate
+bun run generate:ts
 
 # Apply lint fixes and verify formatting.
 bun run lint
