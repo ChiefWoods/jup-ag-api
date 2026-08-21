@@ -13,13 +13,13 @@
 Install the package:
 
 ```bash
-bun add @jup-ag/api
+bun add jupiter-api-ts
 ```
 
 ## Usage
 
 ```ts
-import { JupiterApi } from "@jup-ag/api";
+import { JupiterApi } from "jupiter-api-ts";
 
 const jupiter = new JupiterApi({
   apiKey: "your-jupiter-api-key",
