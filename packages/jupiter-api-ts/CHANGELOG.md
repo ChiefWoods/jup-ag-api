@@ -1,5 +1,11 @@
 # jupiter-api-ts
 
+## 0.2.0
+
+### Minor Changes
+
+- Migrate to use Hey-API
+
 ## 0.1.1
 
 ### Patch Changes
