@@ -1,13 +1,13 @@
 {
-  "name": "@jup-ag/api",
-  "version": "6.0.48",
+  "name": "jupiter-api-ts",
+  "version": "0.0.0",
   "description": "Jupiter API client",
-  "homepage": "https://github.com/jup-ag/jupiter-quote-api-node",
+  "homepage": "https://github.com/ChiefWoods/jup-ag-api",
   "license": "MIT",
   "author": "",
   "repository": {
     "type": "git",
-    "url": "https://github.com/jup-ag/jupiter-quote-api-node.git"
+    "url": "https://github.com/ChiefWoods/jup-ag-api.git"
   },
   "files": [
     "dist",
