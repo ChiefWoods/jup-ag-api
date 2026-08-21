@@ -25,7 +25,10 @@ export default defineConfig([
     input: "./openapi/jupiter.yaml",
     output: "generated/ts/jupiter",
     plugins: [
-      "@hey-api/client-fetch",
+      {
+        name: "@hey-api/client-fetch",
+        baseUrl: "https://api.jup.ag",
+      },
       {
         name: "@hey-api/sdk",
         operations: {
@@ -49,7 +52,10 @@ export default defineConfig([
     input: "./openapi/transaction.yaml",
     output: "generated/ts/tx",
     plugins: [
-      "@hey-api/client-fetch",
+      {
+        name: "@hey-api/client-fetch",
+        baseUrl: "https://tx.jup.ag",
+      },
       {
         name: "@hey-api/sdk",
         operations: {

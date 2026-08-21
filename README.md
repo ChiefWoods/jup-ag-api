@@ -36,6 +36,10 @@ const { data, error } = await jupiter.swap.v2.getOrder({
 });
 ```
 
+`createJupiterApiClient()` defaults to `https://api.jup.ag`, while
+`createJupiterTxApiClient()` defaults to `https://tx.jup.ag`. Pass `baseUrl`
+only to override the base URL.
+
 Use `JupiterTxApi` only for the separate `tx.jup.ag` transaction-submission
 endpoint.
 
