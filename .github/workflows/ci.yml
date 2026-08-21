@@ -3,7 +3,33 @@ name: CI
 on:
   push:
     branches: [main]
+    paths:
+      - ".github/workflows/ci.yml"
+      - "src/**"
+      - "openapi/**"
+      - "generated/**"
+      - "scripts/**"
+      - "package.json"
+      - "bun.lock"
+      - "tsconfig.json"
+      - "tsdown.config.ts"
+      - "openapitools.json"
+      - "oxfmt.config.ts"
+      - "oxlint.config.ts"
   pull_request:
+    paths:
+      - ".github/workflows/ci.yml"
+      - "src/**"
+      - "openapi/**"
+      - "generated/**"
+      - "scripts/**"
+      - "package.json"
+      - "bun.lock"
+      - "tsconfig.json"
+      - "tsdown.config.ts"
+      - "openapitools.json"
+      - "oxfmt.config.ts"
+      - "oxlint.config.ts"
 
 permissions:
   contents: read
@@ -35,8 +61,11 @@ jobs:
       - name: Build
         run: bun run build
 
+      - name: Typecheck
+        run: bun run typecheck
+
       - name: Lint
-        run: bun run lint
+        run: bun run lint:check
 
       - name: Check formatting
         run: bun run format:check
