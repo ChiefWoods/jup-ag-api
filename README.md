@@ -1,230 +1,36 @@
-# Jupiter API Client
+# Jupiter API Clients
 
-[![npm version](https://img.shields.io/npm/v/jupiter-api-ts)](https://www.npmjs.com/package/jupiter-api-ts)
-[![crates.io version](https://img.shields.io/crates/v/jupiter-api-rs)](https://crates.io/crates/jupiter-api-rs)
+Generated client libraries for Jupiter APIs.
 
-## Table of Contents
+## Packages
 
-- [TypeScript](#typescript)
-- [Rust](#rust)
-- [Developing](#developing)
+| Package | Lang | Version |
+| --- | --- | --- |
+| [`jupiter-api-ts`](packages/jupiter-api-ts/README.md) | TypeScript | [![npm version](https://img.shields.io/npm/v/jupiter-api-ts)](https://www.npmjs.com/package/jupiter-api-ts) |
+| [`jupiter-api-rs`](crates/jupiter-api-rs/README.md) | Rust | [![crates.io version](https://img.shields.io/crates/v/jupiter-api-rs)](https://crates.io/crates/jupiter-api-rs) |
 
-## TypeScript
+Each package README contains its installation, usage, development, and release
+instructions.
 
-### Installation
+## Repository development
 
-Install the npm package:
+The version-controlled source OpenAPI specifications live under `openapi/`.
+`openapi/jupiter.yaml` and `openapi/transaction.yaml` are derived composite
+inputs shared by both client generators.
 
-```bash
-bun add jupiter-api-ts
-```
-
-### Example
-
-```ts
-import { JupiterApi, createJupiterApiClient } from "jupiter-api-ts";
-
-const jupiter = new JupiterApi({
-  client: createJupiterApiClient({
-    auth: "your-jupiter-api-key",
-  }),
-});
-
-const { data, error } = await jupiter.swap.v2.getOrder({
-  query: {
-    inputMint: "So11111111111111111111111111111111111111112",
-    outputMint: "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
-    amount: "1000000",
-  },
-});
-```
-
-`createJupiterApiClient()` defaults to `https://api.jup.ag`, while
-`createJupiterTxApiClient()` defaults to `https://tx.jup.ag`. Pass `baseUrl`
-only to override the base URL.
-
-Use `JupiterTxApi` only for the separate `tx.jup.ag` transaction-submission
-endpoint.
-
-```ts
-import { JupiterTxApi, createJupiterTxApiClient } from "jupiter-api-ts";
-
-const jupiterTx = new JupiterTxApi({
-  client: createJupiterTxApiClient({
-    auth: "your-jupiter-api-key",
-  }),
-});
-
-const result = await jupiterTx.sendTransaction({
-  body: {
-    jsonrpc: "2.0",
-    id: 1,
-    method: "sendTransaction",
-    params: ["base64-signed-transaction", { encoding: "base64" }],
-  },
-});
-```
-
-### Why class-based SDKs?
-
-This package intentionally uses Hey API's class-based, nested SDK generation.
-`JupiterApi` mirrors Jupiter's product and version hierarchy (`swap.v2`,
-`tokens.v2.verification`, and so on), making endpoints discoverable and keeping
-future products isolated even when their OpenAPI operation names overlap.
-
-## Rust
-
-### Installation
-
-Add the crate to an application that provides an async runtime, such as Tokio:
-
-```bash
-cargo add jupiter-api-rs
-cargo add tokio --features macros,rt-multi-thread
-```
-
-### Example
-
-The factory configures the required `x-api-key` header. Generated methods use
-an additive builder: required parameters are passed to the builder constructor,
-then optional parameters are set fluently.
-
-```rust
-use jupiter_api_rs::create_jupiter_api;
-
-#[tokio::main]
-async fn main() -> Result<(), Box<dyn std::error::Error>> {
-    let jupiter = create_jupiter_api("your-jupiter-api-key");
-
-    let order = jupiter
-        .get_order_builder(
-            "So11111111111111111111111111111111111111112",
-            "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
-            "1000000",
-        )
-        .slippage_bps(50)
-        .send()
-        .await?;
-
-    println!("{order:#?}");
-    Ok(())
-}
-```
-
-Use `create_jupiter_tx_api(api_key)` to create the separate transaction
-submission client for `https://tx.jup.ag`.
-
-## Developing
-
-This repository uses Bun. Install its dependencies with:
+Install repository dependencies with Bun:
 
 ```bash
 bun install
 ```
 
-### OpenAPI generation
-
-The version-controlled source specifications live under `openapi/`, preserving
-their Jupiter product and version directory structure. `openapi/jupiter.yaml`
-is the derived composite input for `JupiterApi`; `openapi/transaction.yaml` is
-the derived input for `JupiterTxApi`. Upstream specification updates are copied
-into this directory and reviewed here.
-
-To add a new OpenAPI specification to the client:
-
-1. Add the source YAML under `openapi/`, using its natural product/version path.
-2. Run `bun run prepare-openapi`. It discovers every source YAML, derives its
-   normalized tag from the path, and refreshes both derived inputs.
-3. Add the product tag path to `openapi-ts.config.ts` so `JupiterApi` exposes
-   the new API in the same nested structure as `openapi/`. A new host requires
-   a separate Hey API generation target and a separately named SDK class.
-4. Run `bun run generate:ts` to rebuild both typed clients under
-   `packages/jupiter-api-ts/generated/`.
-5. Run the validation commands below before committing the change.
-
-Use these commands during development:
+When source specifications change, refresh the composites before generating a
+client:
 
 ```bash
-# Refresh only the composite root specification.
 bun run prepare-openapi
-
-# Generate from the existing composite root.
-bun run openapi-gen:ts
-
-# Clean generated output, prepare the root, and generate the client.
-bun run generate:ts
-
-# Apply lint fixes and verify formatting.
-bun run lint
-bun run format:check
-
-# Regenerate and compile the published ESM, CJS, and declaration output.
-bun run build
 ```
 
-### Rust generation
-
-The Rust crate is published as `jupiter-api-rs`. Its checked-in clients are
-generated by `openapi-to-rust` from the same canonical composite specifications
-as the TypeScript client. The crate is located at `crates/jupiter-api-rs/` in
-the root Cargo workspace, so its package metadata and changelog are independent
-from the TypeScript package.
-
-Install the pinned generator once:
-
-```bash
-cargo install --locked openapi-to-rust
-```
-
-Then use the Just recipes:
-
-```bash
-# Refresh canonical inputs and regenerate the Jupiter and transaction clients.
-just generate
-
-# Format, type-check, or compile the Rust crate.
-just fmt
-just check
-just build
-
-# Create or inspect a Rust package changeset.
-just changeset
-just changeset-status
-```
-
-The generated `HttpClient` types use `x-api-key` authentication. The package
-root offers `create_jupiter_api(api_key)` and
-`create_jupiter_tx_api(api_key)` as convenience constructors; generated
-operation builders are available for operations with optional values.
-
-### TypeScript releases
-
-Create a changeset for a publishable change and apply the version locally:
-
-```bash
-bun run changeset
-bun run version
-```
-
-Commit the version changes, then create and push a `v*` tag for that version.
-The publish workflow builds `packages/jupiter-api-ts/` and publishes it to npm
-using npm trusted publishing; no local `release` command is needed.
-
-### Rust releases
-
-Rust changesets are stored under `.changeset/changesets/`, separately from npm
-Changesets files at `.changeset/`. `cargo-changeset` writes the Rust changelog
-to `crates/jupiter-api-rs/CHANGELOG.md` and creates tags in the
-`jupiter-api-rs@v*` format, avoiding the TypeScript `CHANGELOG.md` and `v*`
-release tags.
-
-```bash
-# Record a consumer-visible Rust change.
-cargo changeset add --package jupiter-api-rs --bump minor --category added \
-  -m "Add the generated Jupiter API client"
-
-# Preview and then apply the Rust release.
-cargo changeset status
-cargo changeset release --dry-run
-cargo changeset release
-```
+The root is a Bun workspace for npm packages and a Cargo workspace for Rust
+crates. Language-specific source, generated output, package metadata, and
+changelogs live with their respective packages.
