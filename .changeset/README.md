@@ -1,8 +1,8 @@
 # Changesets
 
-Use Changesets to record user-facing changes to `jupiter-api-ts`. Run `bun run
-changeset`, choose the appropriate semantic-version bump, and describe the
-consumer-visible change. Do not add a changeset for tooling-only changes.
+Use Changesets to record user-facing changes to `packages/jupiter-api-ts`. Run
+`bun run changeset`, choose the appropriate semantic-version bump, and describe
+the consumer-visible change. Do not add a changeset for tooling-only changes.
 
 Rust changesets for `jupiter-api-rs` are managed separately by
 `cargo-changeset` in `.changeset/changesets/`. Use `just changeset` to add one;

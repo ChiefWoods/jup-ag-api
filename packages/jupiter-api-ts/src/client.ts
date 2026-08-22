@@ -1,13 +1,13 @@
-import { client as defaultJupiterApiClient } from "../generated/ts/jupiter/client.gen";
+import { client as defaultJupiterApiClient } from "../generated/jupiter/client.gen";
 import {
   createClient as createGeneratedJupiterApiClient,
   type Config as JupiterApiClientConfig,
-} from "../generated/ts/jupiter/client";
-import { client as defaultJupiterTxApiClient } from "../generated/ts/tx/client.gen";
+} from "../generated/jupiter/client";
+import { client as defaultJupiterTxApiClient } from "../generated/tx/client.gen";
 import {
   createClient as createGeneratedJupiterTxApiClient,
   type Config as JupiterTxApiClientConfig,
-} from "../generated/ts/tx/client";
+} from "../generated/tx/client";
 
 export const createJupiterApiClient = (config: JupiterApiClientConfig = {}) =>
   createGeneratedJupiterApiClient({

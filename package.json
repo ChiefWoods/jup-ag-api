@@ -1,29 +1,12 @@
 {
-  "name": "jupiter-api-ts",
-  "version": "0.1.1",
-  "description": "Jupiter API client",
-  "homepage": "https://github.com/ChiefWoods/jup-ag-api",
-  "license": "MIT",
-  "author": "",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/ChiefWoods/jup-ag-api.git"
-  },
-  "files": [
-    "dist",
-    "README.md"
+  "name": "jupiter-api",
+  "private": true,
+  "workspaces": [
+    "packages/*"
   ],
   "type": "module",
-  "sideEffects": false,
-  "exports": {
-    ".": {
-      "types": "./dist/index.d.mts",
-      "import": "./dist/index.mjs",
-      "require": "./dist/index.cjs"
-    }
-  },
   "scripts": {
-    "build": "bun run generate:ts && tsdown",
+    "build": "bun run generate:ts && bun run --filter jupiter-api-ts build",
     "changeset": "changeset",
     "format": "oxfmt --write .",
     "format:check": "oxfmt --check .",
@@ -31,10 +14,9 @@
     "lint:check": "oxlint",
     "prepare-openapi": "bun run scripts/prepare-openapi.ts",
     "openapi-gen:ts": "openapi-ts -f openapi-ts.config.ts",
-    "generate:ts": "rm -rf generated/ts && bun run prepare-openapi && bun run openapi-gen:ts",
+    "generate:ts": "rm -rf packages/jupiter-api-ts/generated && bun run prepare-openapi && bun run openapi-gen:ts",
     "prepare": "husky",
-    "prepublishOnly": "bun run typecheck && bun run build",
-    "typecheck": "tsc --noEmit",
+    "typecheck": "bun run --filter jupiter-api-ts typecheck",
     "version": "changeset version"
   },
   "devDependencies": {

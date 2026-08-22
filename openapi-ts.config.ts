@@ -23,7 +23,7 @@ const TAG_PATHS: Record<string, readonly string[]> = {
 export default defineConfig([
   {
     input: "./openapi/jupiter.yaml",
-    output: "generated/ts/jupiter",
+    output: "packages/jupiter-api-ts/generated/jupiter",
     plugins: [
       {
         name: "@hey-api/client-fetch",
@@ -50,7 +50,7 @@ export default defineConfig([
   },
   {
     input: "./openapi/transaction.yaml",
-    output: "generated/ts/tx",
+    output: "packages/jupiter-api-ts/generated/tx",
     plugins: [
       {
         name: "@hey-api/client-fetch",

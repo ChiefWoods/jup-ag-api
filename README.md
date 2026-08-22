@@ -138,7 +138,8 @@ To add a new OpenAPI specification to the client:
 3. Add the product tag path to `openapi-ts.config.ts` so `JupiterApi` exposes
    the new API in the same nested structure as `openapi/`. A new host requires
    a separate Hey API generation target and a separately named SDK class.
-4. Run `bun run generate:ts` to rebuild both typed clients under `generated/ts/`.
+4. Run `bun run generate:ts` to rebuild both typed clients under
+   `packages/jupiter-api-ts/generated/`.
 5. Run the validation commands below before committing the change.
 
 Use these commands during development:
@@ -206,8 +207,8 @@ bun run version
 ```
 
 Commit the version changes, then create and push a `v*` tag for that version.
-The publish workflow builds the package and publishes it to npm using npm trusted
-publishing; no local `release` command is needed.
+The publish workflow builds `packages/jupiter-api-ts/` and publishes it to npm
+using npm trusted publishing; no local `release` command is needed.
 
 ### Rust releases
 

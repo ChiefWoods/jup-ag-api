@@ -1,0 +1,30 @@
+{
+  "name": "jupiter-api-ts",
+  "version": "0.1.1",
+  "description": "Jupiter API client",
+  "homepage": "https://github.com/ChiefWoods/jup-ag-api",
+  "license": "MIT",
+  "author": "",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ChiefWoods/jup-ag-api.git"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "type": "module",
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.mts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "scripts": {
+    "build": "tsdown",
+    "prepublishOnly": "bun run --cwd ../.. build",
+    "typecheck": "tsc --noEmit"
+  }
+}
