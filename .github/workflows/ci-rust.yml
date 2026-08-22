@@ -2,7 +2,7 @@ name: CI (Rust)
 
 on:
   push:
-    branches: [main]
+    branches: [main, release]
     paths:
       - ".github/workflows/ci-rust.yml"
       - "Cargo.toml"
