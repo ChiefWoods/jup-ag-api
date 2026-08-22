@@ -1,10 +1,10 @@
-name: Publish package
+name: Publish npm package
 run-name: Publish ${{ github.ref_name }}
 
 on:
   push:
     tags:
-      - "v*"
+      - "jupiter-api-ts@v*"
 
 permissions:
   contents: write
@@ -19,7 +19,7 @@ jobs:
 
       - name: Extract changelog
         run: |
-          version="${GITHUB_REF_NAME#v}"
+          version="${GITHUB_REF_NAME#jupiter-api-ts@v}"
           awk -v ver="$version" '
             $0 == "## " ver { found = 1; next }
             found && /^## / { exit }
