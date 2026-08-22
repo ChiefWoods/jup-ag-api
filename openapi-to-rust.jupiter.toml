@@ -1,0 +1,18 @@
+[generator]
+spec_path = "openapi/jupiter.yaml"
+output_dir = "crates/jupiter-api-rs/generated/jupiter"
+module_name = "jupiter"
+
+[generator.builders]
+enabled = true
+threshold = 0
+
+[features]
+enable_async_client = true
+
+[http_client]
+base_url = "https://api.jup.ag"
+
+[http_client.auth]
+type = "ApiKey"
+header_name = "x-api-key"

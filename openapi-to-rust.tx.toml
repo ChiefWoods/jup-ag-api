@@ -1,0 +1,18 @@
+[generator]
+spec_path = "openapi/transaction.yaml"
+output_dir = "crates/jupiter-api-rs/generated/tx"
+module_name = "jupiter_tx"
+
+[generator.builders]
+enabled = true
+threshold = 0
+
+[features]
+enable_async_client = true
+
+[http_client]
+base_url = "https://tx.jup.ag"
+
+[http_client.auth]
+type = "ApiKey"
+header_name = "x-api-key"
