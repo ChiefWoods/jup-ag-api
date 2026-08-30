@@ -1,5 +1,10 @@
 # Changelog
 
+## [0.1.2] - 2026-08-30
+### Changed
+
+- Add datapi client
+
 ## [0.1.1] - 2026-08-30
 ### Added
 
@@ -12,3 +17,5 @@
 - Initial generated Jupiter API Rust client.
 
 [0.1.1]: https://github.com/ChiefWoods/jup-ag-api/compare/v0.1.0...v0.1.1
+
+[0.1.2]: https://github.com/ChiefWoods/jup-ag-api/compare/v0.1.1...v0.1.2
