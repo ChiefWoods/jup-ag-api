@@ -2,6 +2,11 @@
   "name": "jupiter-api-ts",
   "version": "0.2.0",
   "description": "Jupiter API client",
+  "keywords": [
+    "api",
+    "jupiter",
+    "solana"
+  ],
   "homepage": "https://github.com/ChiefWoods/jup-ag-api",
   "license": "MIT",
   "author": "",
