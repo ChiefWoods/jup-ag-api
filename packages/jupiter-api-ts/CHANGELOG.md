@@ -1,5 +1,11 @@
 # jupiter-api-ts
 
+## 0.4.0
+
+### Minor Changes
+
+- Add datapi client
+
 ## 0.3.0
 
 ### Minor Changes
