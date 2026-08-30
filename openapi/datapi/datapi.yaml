@@ -1,0 +1,309 @@
+openapi: 3.1.0
+info:
+  title: Jupiter Data API
+  version: 2026-08-30
+  description: |
+    An OpenAPI description assembled from live, public endpoint validation.
+    Jupiter does not publish an OpenAPI document for this service. The two
+    parameterized asset and transaction handlers may accept additional values;
+    documented values here are those verified during discovery.
+servers:
+  - url: https://datapi.jup.ag
+    description: Jupiter Data API endpoint
+paths:
+  /:
+    get:
+      operationId: healthCheck
+      summary: Health check
+      responses:
+        '200':
+          description: Service is healthy.
+          content:
+            text/plain:
+              schema: { type: string }
+  /v1/assets:
+    get:
+      operationId: getAssetsByIds
+      summary: Get assets by mint ID
+      parameters:
+        - $ref: '#/components/parameters/ids'
+      responses:
+        '200':
+          $ref: '#/components/responses/AssetList'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+  /v1/assets/search:
+    get:
+      operationId: searchAssets
+      summary: Search assets
+      parameters:
+        - name: query
+          in: query
+          required: true
+          schema: { type: string }
+          example: SOL
+        - $ref: '#/components/parameters/limit'
+      responses:
+        '200':
+          description: Matching assets.
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: '#/components/schemas/Asset' }
+  /v1/holders/{mint}:
+    get:
+      operationId: getHolders
+      summary: Get token holders
+      parameters:
+        - $ref: '#/components/parameters/mint'
+      responses:
+        '200':
+          description: Holder data.
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [holders, count]
+                properties:
+                  holders:
+                    type: array
+                    items: { type: object, additionalProperties: true }
+                  count: { type: integer }
+                  holderPnl: { type: object, additionalProperties: true }
+  /v1/pools:
+    get:
+      operationId: listPools
+      summary: List pools
+      responses:
+        '200':
+          description: Pool listing.
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [pools, total]
+                properties:
+                  pools:
+                    type: array
+                    items: { type: object, additionalProperties: true }
+                  total: { type: integer }
+  /v1/txs/users:
+    get:
+      operationId: getUserTransactions
+      summary: Get a user's spot trade activity
+      parameters:
+        - name: addresses
+          in: query
+          required: true
+          description: One or more comma-separated Solana addresses.
+          schema: { type: string }
+        - name: includeCapitalSide
+          in: query
+          required: false
+          schema: { type: boolean }
+        - name: assetId
+          in: query
+          required: false
+          description: Filter by a Solana mint ID.
+          schema: { type: string }
+        - name: fromTs
+          in: query
+          required: false
+          description: Inclusive start time, as a Unix timestamp in milliseconds.
+          schema: { type: integer, format: int64 }
+        - name: toTs
+          in: query
+          required: false
+          description: Inclusive end time, as a Unix timestamp in milliseconds.
+          schema: { type: integer, format: int64 }
+        - $ref: '#/components/parameters/limit30'
+        - name: offset
+          in: query
+          required: false
+          description: Zero-based numeric result offset.
+          schema: { type: integer, minimum: 0 }
+      responses:
+        '200':
+          description: User trade activity.
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [userTrades]
+                properties:
+                  userTrades:
+                    type: array
+                    items: { type: object, additionalProperties: true }
+                  next: { type: [string, 'null'] }
+        '400':
+          $ref: '#/components/responses/BadRequest'
+  /v2/charts/{mint}:
+    get:
+      operationId: getChartCandles
+      summary: Get OHLCV chart candles
+      parameters:
+        - $ref: '#/components/parameters/mint'
+        - name: interval
+          in: query
+          required: true
+          schema:
+            type: string
+            enum: [1_MINUTE, 5_MINUTE, 15_MINUTE, 30_MINUTE, 1_HOUR, 4_HOUR, 1_DAY, 1_WEEK]
+        - name: to
+          in: query
+          required: true
+          description: Unix timestamp in milliseconds.
+          schema: { type: integer, format: int64 }
+        - name: candles
+          in: query
+          required: false
+          schema: { type: integer, minimum: 1 }
+        - name: type
+          in: query
+          required: false
+          schema: { type: string, enum: [price, mcap], default: price }
+        - name: quote
+          in: query
+          required: false
+          schema: { type: string, enum: [usd], default: usd }
+      responses:
+        '200':
+          description: OHLCV candles.
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [candles]
+                properties:
+                  candles:
+                    type: array
+                    items: { $ref: '#/components/schemas/Candle' }
+        '400':
+          $ref: '#/components/responses/BadRequest'
+  /v2/assets/stocks/24h:
+    get:
+      operationId: listStockAssets
+      summary: List tokenized stocks with 24-hour metrics
+      parameters:
+        - $ref: '#/components/parameters/sortBy'
+        - $ref: '#/components/parameters/sortDir'
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/offset'
+        - name: includeOndoStatus
+          in: query
+          required: false
+          schema: { type: boolean }
+      responses:
+        '200':
+          $ref: '#/components/responses/AssetList'
+  /v2/assets/{filter}/{interval}:
+    get:
+      operationId: listDiscoveryAssets
+      summary: List assets in a discovery filter
+      parameters:
+        - name: filter
+          in: path
+          required: true
+          schema:
+            type: string
+            enum: [toptrending, topgainers, toplosers, topvolume, toporganic, toporganicscore, topnetbuyers, topbuyers, topnew, new, recent, trending, verified, strict, launches]
+        - name: interval
+          in: path
+          required: true
+          schema: { type: string, enum: [5m, 1h, 6h, 24h] }
+        - $ref: '#/components/parameters/sortBy'
+        - $ref: '#/components/parameters/sortDir'
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/offset'
+      responses:
+        '200':
+          $ref: '#/components/responses/AssetList'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+components:
+  parameters:
+    ids:
+      name: ids
+      in: query
+      required: true
+      description: One or more comma-separated Solana mint IDs.
+      schema: { type: string }
+    mint:
+      name: mint
+      in: path
+      required: true
+      schema: { type: string }
+    limit:
+      name: limit
+      in: query
+      required: false
+      schema: { type: integer, minimum: 1 }
+    limit30:
+      name: limit
+      in: query
+      required: false
+      schema: { type: integer, minimum: 1, maximum: 30 }
+    offset:
+      name: offset
+      in: query
+      required: false
+      schema: { type: integer, minimum: 0 }
+    sortBy:
+      name: sortBy
+      in: query
+      required: false
+      schema: { type: string }
+    sortDir:
+      name: sortDir
+      in: query
+      required: false
+      schema: { type: string, enum: [asc, desc] }
+  responses:
+    AssetList:
+      description: Asset listing.
+      content:
+        application/json:
+          schema:
+            type: object
+            required: [assets, total]
+            properties:
+              assets:
+                type: array
+                items: { $ref: '#/components/schemas/Asset' }
+              total: { type: integer }
+              next: { type: integer }
+    BadRequest:
+      description: Invalid request parameter.
+      content:
+        application/json:
+          schema: { $ref: '#/components/schemas/Error' }
+  schemas:
+    Asset:
+      type: object
+      required: [id, name, symbol]
+      properties:
+        id: { type: string }
+        name: { type: string }
+        symbol: { type: string }
+        decimals: { type: integer }
+        usdPrice: { type: number }
+        mcap: { type: number }
+        fdv: { type: number }
+        liquidity: { type: number }
+      additionalProperties: true
+    Candle:
+      type: object
+      required: [time, open, high, low, close, volume]
+      properties:
+        time: { type: integer, format: int64, description: Unix timestamp in seconds. }
+        open: { type: number }
+        high: { type: number }
+        low: { type: number }
+        close: { type: number }
+        volume: { type: number }
+    Error:
+      type: object
+      properties:
+        status: { type: integer }
+        message: { type: string }
