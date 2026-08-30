@@ -8,6 +8,11 @@ import {
   createClient as createGeneratedJupiterTxApiClient,
   type Config as JupiterTxApiClientConfig,
 } from "../generated/tx/client";
+import { client as defaultJupiterPerpsApiClient } from "../generated/perps/client.gen";
+import {
+  createClient as createGeneratedJupiterPerpsApiClient,
+  type Config as JupiterPerpsApiClientConfig,
+} from "../generated/perps/client";
 
 export const createJupiterApiClient = (config: JupiterApiClientConfig = {}) =>
   createGeneratedJupiterApiClient({
@@ -21,4 +26,10 @@ export const createJupiterTxApiClient = (config: JupiterTxApiClientConfig = {}) 
     ...config,
   });
 
-export type { JupiterApiClientConfig, JupiterTxApiClientConfig };
+export const createJupiterPerpsApiClient = (config: JupiterPerpsApiClientConfig = {}) =>
+  createGeneratedJupiterPerpsApiClient({
+    ...defaultJupiterPerpsApiClient.getConfig(),
+    ...config,
+  });
+
+export type { JupiterApiClientConfig, JupiterPerpsApiClientConfig, JupiterTxApiClientConfig };

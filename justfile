@@ -26,10 +26,11 @@ release:
 prepare-openapi:
     bun run prepare-openapi
 
-# Generate both openapi-to-rust clients from the canonical composite specs.
+# Generate all openapi-to-rust clients from their canonical specs.
 openapi-gen:
     openapi-to-rust generate --config openapi-to-rust.jupiter.toml
     openapi-to-rust generate --config openapi-to-rust.tx.toml
+    openapi-to-rust generate --config openapi-to-rust.perps.toml
     cargo fmt --all
 
 # Refresh the OpenAPI inputs and regenerate both clients.

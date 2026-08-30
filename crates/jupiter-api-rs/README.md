@@ -42,6 +42,16 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 Use `create_jupiter_tx_api(api_key)` to create the separate transaction
 submission client for `https://tx.jup.ag`.
 
+For the Perps endpoint:
+
+```rust
+use jupiter_api_rs::create_jupiter_perps_api;
+
+let perps = create_jupiter_perps_api();
+```
+
+Defaults to `https://perps-api.jup.ag/v1` and does not require an API key.
+
 ## Development
 
 This crate is part of the repository's root Cargo workspace. Its checked-in
@@ -57,7 +67,7 @@ cargo install --locked openapi-to-rust
 Then, from the repository root:
 
 ```bash
-# Refresh canonical inputs and regenerate both Rust clients.
+# Refresh canonical inputs and regenerate all Rust clients.
 just generate
 
 # Format, type-check, or compile the Rust workspace.

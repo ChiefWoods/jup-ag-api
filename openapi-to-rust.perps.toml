@@ -1,0 +1,14 @@
+[generator]
+spec_path = "openapi/perps/v1/perps.json"
+output_dir = "crates/jupiter-api-rs/generated/perps"
+module_name = "perps"
+
+[generator.builders]
+enabled = true
+threshold = 0
+
+[features]
+enable_async_client = true
+
+[http_client]
+base_url = "https://perps-api.jup.ag/v1"

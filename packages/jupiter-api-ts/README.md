@@ -54,6 +54,22 @@ const result = await jupiterTx.sendTransaction({
 
 `createJupiterTxApiClient()` defaults to `https://tx.jup.ag`.
 
+For the Perps endpoint:
+
+```ts
+import { JupiterPerpsApi, createJupiterPerpsApiClient } from "jupiter-api-ts";
+
+const perps = new JupiterPerpsApi();
+
+const { data, error } = await perps.getMarketStats({
+  query: {
+    mint: "So11111111111111111111111111111111111111112",
+  },
+});
+```
+
+Defaults to `https://perps-api.jup.ag/v1` and does not require an API key.
+
 ## API layout
 
 This SDK uses Hey API's class-based, nested SDK generation. `JupiterApi`

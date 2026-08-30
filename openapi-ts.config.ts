@@ -68,4 +68,21 @@ export default defineConfig([
       },
     ],
   },
+  {
+    input: "./openapi/perps/v1/perps.json",
+    output: "packages/jupiter-api-ts/generated/perps",
+    plugins: [
+      {
+        name: "@hey-api/client-fetch",
+        baseUrl: "https://perps-api.jup.ag/v1",
+      },
+      {
+        name: "@hey-api/sdk",
+        operations: {
+          containerName: "JupiterPerpsApi",
+          strategy: "single",
+        },
+      },
+    ],
+  },
 ]);
