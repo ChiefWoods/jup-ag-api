@@ -1,5 +1,11 @@
 # jupiter-api-ts
 
+## 0.3.0
+
+### Minor Changes
+
+- Add perps client
+
 ## 0.2.0
 
 ### Minor Changes
