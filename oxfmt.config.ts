@@ -8,6 +8,7 @@ export default defineConfig({
     "openapi/**",
     "README.md",
     "PLAN.md",
+    "CHANGELOG.md",
     "swagger.yaml",
   ],
   printWidth: 100,
