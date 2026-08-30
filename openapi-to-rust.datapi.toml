@@ -1,0 +1,14 @@
+[generator]
+spec_path = "openapi/datapi/datapi.yaml"
+output_dir = "crates/jupiter-api-rs/generated/datapi"
+module_name = "datapi"
+
+[generator.builders]
+enabled = true
+threshold = 0
+
+[features]
+enable_async_client = true
+
+[http_client]
+base_url = "https://datapi.jup.ag"

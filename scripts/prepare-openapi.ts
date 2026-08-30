@@ -6,6 +6,12 @@ const OPENAPI_DIRECTORY = join(import.meta.dir, "..", "openapi");
 const OUTPUT_PATH = join(OPENAPI_DIRECTORY, "jupiter.yaml");
 const TRANSACTION_SOURCE_PATH = "transaction/transaction.yaml";
 const TRANSACTION_OUTPUT_PATH = join(OPENAPI_DIRECTORY, "transaction.yaml");
+const JUPITER_SOURCE_EXCLUSIONS = new Set([
+  "jupiter.yaml",
+  "transaction.yaml",
+  TRANSACTION_SOURCE_PATH,
+  "datapi/datapi.yaml",
+]);
 const HTTP_METHODS = new Set(["delete", "get", "head", "options", "patch", "post", "put", "trace"]);
 
 function isRecord(value: unknown): value is OpenApiDocument {
@@ -204,7 +210,7 @@ function operationsForPath(
 
 const sourceFiles: string[] = [];
 for await (const file of new Bun.Glob("**/*.yaml").scan({ cwd: OPENAPI_DIRECTORY })) {
-  if (file !== "jupiter.yaml" && file !== "transaction.yaml" && file !== TRANSACTION_SOURCE_PATH) {
+  if (!JUPITER_SOURCE_EXCLUSIONS.has(file)) {
     sourceFiles.push(file);
   }
 }

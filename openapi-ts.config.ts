@@ -85,4 +85,21 @@ export default defineConfig([
       },
     ],
   },
+  {
+    input: "./openapi/datapi/datapi.yaml",
+    output: "packages/jupiter-api-ts/generated/datapi",
+    plugins: [
+      {
+        name: "@hey-api/client-fetch",
+        baseUrl: "https://datapi.jup.ag",
+      },
+      {
+        name: "@hey-api/sdk",
+        operations: {
+          containerName: "JupiterDatapi",
+          strategy: "single",
+        },
+      },
+    ],
+  },
 ]);

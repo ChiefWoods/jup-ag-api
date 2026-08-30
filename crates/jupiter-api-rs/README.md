@@ -52,6 +52,16 @@ let perps = create_jupiter_perps_api();
 
 Defaults to `https://perps-api.jup.ag/v1` and does not require an API key.
 
+For the Data API endpoint:
+
+```rust
+use jupiter_api_rs::create_jupiter_datapi;
+
+let datapi = create_jupiter_datapi();
+```
+
+Defaults to `https://datapi.jup.ag` and does not require an API key.
+
 ## Development
 
 This crate is part of the repository's root Cargo workspace. Its checked-in

@@ -31,6 +31,7 @@ openapi-gen:
     openapi-to-rust generate --config openapi-to-rust.jupiter.toml
     openapi-to-rust generate --config openapi-to-rust.tx.toml
     openapi-to-rust generate --config openapi-to-rust.perps.toml
+    openapi-to-rust generate --config openapi-to-rust.datapi.toml
     cargo fmt --all
 
 # Refresh the OpenAPI inputs and regenerate both clients.

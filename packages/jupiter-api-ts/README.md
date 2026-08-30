@@ -70,6 +70,22 @@ const { data, error } = await perps.getMarketStats({
 
 Defaults to `https://perps-api.jup.ag/v1` and does not require an API key.
 
+For the Data API endpoint:
+
+```ts
+import { JupiterDatapi, createJupiterDatapiClient } from "jupiter-api-ts";
+
+const datapi = new JupiterDatapi();
+
+const { data, error } = await datapi.searchAssets({
+  query: {
+    query: "SOL",
+  },
+});
+```
+
+Defaults to `https://datapi.jup.ag` and does not require an API key.
+
 ## API layout
 
 This SDK uses Hey API's class-based, nested SDK generation. `JupiterApi`

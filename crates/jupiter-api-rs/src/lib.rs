@@ -12,6 +12,10 @@ pub mod tx;
 #[path = "../generated/perps/mod.rs"]
 pub mod perps;
 
+/// Generated client and types for Data API endpoints hosted at `https://datapi.jup.ag`.
+#[path = "../generated/datapi/mod.rs"]
+pub mod datapi;
+
 /// Generated client for endpoints hosted at `https://api.jup.ag`.
 pub type JupiterApi = jupiter::HttpClient;
 
@@ -20,6 +24,9 @@ pub type JupiterTxApi = tx::HttpClient;
 
 /// Generated client for unauthenticated Perps endpoints hosted at `https://perps-api.jup.ag/v1`.
 pub type JupiterPerpsApi = perps::HttpClient;
+
+/// Generated client for unauthenticated Data API endpoints hosted at `https://datapi.jup.ag`.
+pub type JupiterDatapi = datapi::HttpClient;
 
 /// Creates a Jupiter API client configured with the required `x-api-key` header.
 pub fn create_jupiter_api(api_key: impl Into<String>) -> JupiterApi {
@@ -34,4 +41,9 @@ pub fn create_jupiter_tx_api(api_key: impl Into<String>) -> JupiterTxApi {
 /// Creates an unauthenticated Jupiter Perps API client.
 pub fn create_jupiter_perps_api() -> JupiterPerpsApi {
     JupiterPerpsApi::new()
+}
+
+/// Creates an unauthenticated Jupiter Data API client.
+pub fn create_jupiter_datapi() -> JupiterDatapi {
+    JupiterDatapi::new()
 }
