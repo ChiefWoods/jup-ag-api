@@ -1,5 +1,11 @@
 # jupiter-api-ts
 
+## 0.4.1
+
+### Patch Changes
+
+- Fallback to HTTP method + full path for routes with no operation ID
+
 ## 0.4.0
 
 ### Minor Changes
