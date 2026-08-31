@@ -138,7 +138,7 @@ export class Lend extends HeyApiClient {
      * Request for a base64-encoded unsigned earn deposit transaction to deposit assets
      *
      */
-    public post<ThrowOnError extends boolean = false>(options: Options<PostLendV1EarnDepositData, ThrowOnError>): RequestResult<PostLendV1EarnDepositResponses, unknown, ThrowOnError> {
+    public postLendV1EarnDeposit<ThrowOnError extends boolean = false>(options: Options<PostLendV1EarnDepositData, ThrowOnError>): RequestResult<PostLendV1EarnDepositResponses, unknown, ThrowOnError> {
         return (options.client ?? this.client).post<PostLendV1EarnDepositResponses, unknown, ThrowOnError>({
             security: [{
                     key: 'Lend_ApiKeyAuth',
@@ -160,7 +160,7 @@ export class Lend extends HeyApiClient {
      * Request for the instruction of an earn deposit transaction to deposit assets
      *
      */
-    public post2<ThrowOnError extends boolean = false>(options: Options<PostLendV1EarnDepositInstructionsData, ThrowOnError>): RequestResult<PostLendV1EarnDepositInstructionsResponses, unknown, ThrowOnError> {
+    public postLendV1EarnDepositInstructions<ThrowOnError extends boolean = false>(options: Options<PostLendV1EarnDepositInstructionsData, ThrowOnError>): RequestResult<PostLendV1EarnDepositInstructionsResponses, unknown, ThrowOnError> {
         return (options.client ?? this.client).post<PostLendV1EarnDepositInstructionsResponses, unknown, ThrowOnError>({
             security: [{
                     key: 'Lend_ApiKeyAuth',
@@ -182,7 +182,7 @@ export class Lend extends HeyApiClient {
      * Request for a base64-encoded unsigned earn withdraw transaction to withdraw assets
      *
      */
-    public post3<ThrowOnError extends boolean = false>(options: Options<PostLendV1EarnWithdrawData, ThrowOnError>): RequestResult<PostLendV1EarnWithdrawResponses, unknown, ThrowOnError> {
+    public postLendV1EarnWithdraw<ThrowOnError extends boolean = false>(options: Options<PostLendV1EarnWithdrawData, ThrowOnError>): RequestResult<PostLendV1EarnWithdrawResponses, unknown, ThrowOnError> {
         return (options.client ?? this.client).post<PostLendV1EarnWithdrawResponses, unknown, ThrowOnError>({
             security: [{
                     key: 'Lend_ApiKeyAuth',
@@ -204,7 +204,7 @@ export class Lend extends HeyApiClient {
      * Request for the instruction of an earn withdraw transaction to withdraw assets
      *
      */
-    public post4<ThrowOnError extends boolean = false>(options: Options<PostLendV1EarnWithdrawInstructionsData, ThrowOnError>): RequestResult<PostLendV1EarnWithdrawInstructionsResponses, unknown, ThrowOnError> {
+    public postLendV1EarnWithdrawInstructions<ThrowOnError extends boolean = false>(options: Options<PostLendV1EarnWithdrawInstructionsData, ThrowOnError>): RequestResult<PostLendV1EarnWithdrawInstructionsResponses, unknown, ThrowOnError> {
         return (options.client ?? this.client).post<PostLendV1EarnWithdrawInstructionsResponses, unknown, ThrowOnError>({
             security: [{
                     key: 'Lend_ApiKeyAuth',
@@ -226,7 +226,7 @@ export class Lend extends HeyApiClient {
      * Request for a base64-encoded unsigned earn mint transaction to mint shares
      *
      */
-    public post5<ThrowOnError extends boolean = false>(options: Options<PostLendV1EarnMintData, ThrowOnError>): RequestResult<PostLendV1EarnMintResponses, unknown, ThrowOnError> {
+    public postLendV1EarnMint<ThrowOnError extends boolean = false>(options: Options<PostLendV1EarnMintData, ThrowOnError>): RequestResult<PostLendV1EarnMintResponses, unknown, ThrowOnError> {
         return (options.client ?? this.client).post<PostLendV1EarnMintResponses, unknown, ThrowOnError>({
             security: [{
                     key: 'Lend_ApiKeyAuth',
@@ -248,7 +248,7 @@ export class Lend extends HeyApiClient {
      * Request for the instruction of an earn mint transaction to mint shares
      *
      */
-    public post6<ThrowOnError extends boolean = false>(options: Options<PostLendV1EarnMintInstructionsData, ThrowOnError>): RequestResult<PostLendV1EarnMintInstructionsResponses, unknown, ThrowOnError> {
+    public postLendV1EarnMintInstructions<ThrowOnError extends boolean = false>(options: Options<PostLendV1EarnMintInstructionsData, ThrowOnError>): RequestResult<PostLendV1EarnMintInstructionsResponses, unknown, ThrowOnError> {
         return (options.client ?? this.client).post<PostLendV1EarnMintInstructionsResponses, unknown, ThrowOnError>({
             security: [{
                     key: 'Lend_ApiKeyAuth',
@@ -270,7 +270,7 @@ export class Lend extends HeyApiClient {
      * Request for a base64-encoded unsigned earn redeem transaction to redeem shares
      *
      */
-    public post7<ThrowOnError extends boolean = false>(options: Options<PostLendV1EarnRedeemData, ThrowOnError>): RequestResult<PostLendV1EarnRedeemResponses, unknown, ThrowOnError> {
+    public postLendV1EarnRedeem<ThrowOnError extends boolean = false>(options: Options<PostLendV1EarnRedeemData, ThrowOnError>): RequestResult<PostLendV1EarnRedeemResponses, unknown, ThrowOnError> {
         return (options.client ?? this.client).post<PostLendV1EarnRedeemResponses, unknown, ThrowOnError>({
             security: [{
                     key: 'Lend_ApiKeyAuth',
@@ -292,7 +292,7 @@ export class Lend extends HeyApiClient {
      * Request for the instruction of an earn redeem transaction to redeem shares
      *
      */
-    public post8<ThrowOnError extends boolean = false>(options: Options<PostLendV1EarnRedeemInstructionsData, ThrowOnError>): RequestResult<PostLendV1EarnRedeemInstructionsResponses, unknown, ThrowOnError> {
+    public postLendV1EarnRedeemInstructions<ThrowOnError extends boolean = false>(options: Options<PostLendV1EarnRedeemInstructionsData, ThrowOnError>): RequestResult<PostLendV1EarnRedeemInstructionsResponses, unknown, ThrowOnError> {
         return (options.client ?? this.client).post<PostLendV1EarnRedeemInstructionsResponses, unknown, ThrowOnError>({
             security: [{
                     key: 'Lend_ApiKeyAuth',
@@ -314,7 +314,7 @@ export class Lend extends HeyApiClient {
      * Request for the tokens available to be deposited and their information
      *
      */
-    public get<ThrowOnError extends boolean = false>(options?: Options<GetLendV1EarnTokensData, ThrowOnError>): RequestResult<GetLendV1EarnTokensResponses, unknown, ThrowOnError> {
+    public getLendV1EarnTokens<ThrowOnError extends boolean = false>(options?: Options<GetLendV1EarnTokensData, ThrowOnError>): RequestResult<GetLendV1EarnTokensResponses, unknown, ThrowOnError> {
         return (options?.client ?? this.client).get<GetLendV1EarnTokensResponses, unknown, ThrowOnError>({
             security: [{
                     key: 'Lend_ApiKeyAuth',
@@ -332,7 +332,7 @@ export class Lend extends HeyApiClient {
      * Request for the position data of one or multiple users
      *
      */
-    public get2<ThrowOnError extends boolean = false>(options: Options<GetLendV1EarnPositionsData, ThrowOnError>): RequestResult<GetLendV1EarnPositionsResponses, unknown, ThrowOnError> {
+    public getLendV1EarnPositions<ThrowOnError extends boolean = false>(options: Options<GetLendV1EarnPositionsData, ThrowOnError>): RequestResult<GetLendV1EarnPositionsResponses, unknown, ThrowOnError> {
         return (options.client ?? this.client).get<GetLendV1EarnPositionsResponses, unknown, ThrowOnError>({
             security: [{
                     key: 'Lend_ApiKeyAuth',
@@ -350,7 +350,7 @@ export class Lend extends HeyApiClient {
      * Request for the earnings of one or multiple positions of a user
      *
      */
-    public get3<ThrowOnError extends boolean = false>(options: Options<GetLendV1EarnEarningsData, ThrowOnError>): RequestResult<GetLendV1EarnEarningsResponses, unknown, ThrowOnError> {
+    public getLendV1EarnEarnings<ThrowOnError extends boolean = false>(options: Options<GetLendV1EarnEarningsData, ThrowOnError>): RequestResult<GetLendV1EarnEarningsResponses, unknown, ThrowOnError> {
         return (options.client ?? this.client).get<GetLendV1EarnEarningsResponses, unknown, ThrowOnError>({
             security: [{
                     key: 'Lend_ApiKeyAuth',
@@ -376,21 +376,21 @@ export class Lend2 extends HeyApiClient {
 }
 
 export class Portfolio extends HeyApiClient {
-    public get<ThrowOnError extends boolean = false>(options: Options<GetPortfolioV1PositionsByAddressData, ThrowOnError>): RequestResult<GetPortfolioV1PositionsByAddressResponses, unknown, ThrowOnError> {
+    public getPortfolioV1PositionsAddress<ThrowOnError extends boolean = false>(options: Options<GetPortfolioV1PositionsByAddressData, ThrowOnError>): RequestResult<GetPortfolioV1PositionsByAddressResponses, unknown, ThrowOnError> {
         return (options.client ?? this.client).get<GetPortfolioV1PositionsByAddressResponses, unknown, ThrowOnError>({ url: '/portfolio/v1/positions/{address}', ...options });
     }
     
-    public get2<ThrowOnError extends boolean = false>(options?: Options<GetPortfolioV1PlatformsData, ThrowOnError>): RequestResult<GetPortfolioV1PlatformsResponses, unknown, ThrowOnError> {
+    public getPortfolioV1Platforms<ThrowOnError extends boolean = false>(options?: Options<GetPortfolioV1PlatformsData, ThrowOnError>): RequestResult<GetPortfolioV1PlatformsResponses, unknown, ThrowOnError> {
         return (options?.client ?? this.client).get<GetPortfolioV1PlatformsResponses, unknown, ThrowOnError>({ url: '/portfolio/v1/platforms', ...options });
     }
     
-    public get3<ThrowOnError extends boolean = false>(options: Options<GetPortfolioV1StakedJupByAddressData, ThrowOnError>): RequestResult<GetPortfolioV1StakedJupByAddressResponses, unknown, ThrowOnError> {
+    public getPortfolioV1StakedJupAddress<ThrowOnError extends boolean = false>(options: Options<GetPortfolioV1StakedJupByAddressData, ThrowOnError>): RequestResult<GetPortfolioV1StakedJupByAddressResponses, unknown, ThrowOnError> {
         return (options.client ?? this.client).get<GetPortfolioV1StakedJupByAddressResponses, unknown, ThrowOnError>({ url: '/portfolio/v1/staked-jup/{address}', ...options });
     }
 }
 
 export class Prediction extends HeyApiClient {
-    public get<ThrowOnError extends boolean = false>(options: Options<GetPredictionV1EventsSearchData, ThrowOnError>): RequestResult<GetPredictionV1EventsSearchResponses, unknown, ThrowOnError> {
+    public getPredictionV1EventsSearch<ThrowOnError extends boolean = false>(options: Options<GetPredictionV1EventsSearchData, ThrowOnError>): RequestResult<GetPredictionV1EventsSearchResponses, unknown, ThrowOnError> {
         return (options.client ?? this.client).get<GetPredictionV1EventsSearchResponses, unknown, ThrowOnError>({
             security: [{
                     key: 'Prediction_ApiKeyAuth',
@@ -402,7 +402,7 @@ export class Prediction extends HeyApiClient {
         });
     }
     
-    public get2<ThrowOnError extends boolean = false>(options?: Options<GetPredictionV1EventsData, ThrowOnError>): RequestResult<GetPredictionV1EventsResponses, unknown, ThrowOnError> {
+    public getPredictionV1Events<ThrowOnError extends boolean = false>(options?: Options<GetPredictionV1EventsData, ThrowOnError>): RequestResult<GetPredictionV1EventsResponses, unknown, ThrowOnError> {
         return (options?.client ?? this.client).get<GetPredictionV1EventsResponses, unknown, ThrowOnError>({
             security: [{
                     key: 'Prediction_ApiKeyAuth',
@@ -414,7 +414,7 @@ export class Prediction extends HeyApiClient {
         });
     }
     
-    public get3<ThrowOnError extends boolean = false>(options: Options<GetPredictionV1EventsByEventIdData, ThrowOnError>): RequestResult<GetPredictionV1EventsByEventIdResponses, GetPredictionV1EventsByEventIdErrors, ThrowOnError> {
+    public getPredictionV1EventsEventId<ThrowOnError extends boolean = false>(options: Options<GetPredictionV1EventsByEventIdData, ThrowOnError>): RequestResult<GetPredictionV1EventsByEventIdResponses, GetPredictionV1EventsByEventIdErrors, ThrowOnError> {
         return (options.client ?? this.client).get<GetPredictionV1EventsByEventIdResponses, GetPredictionV1EventsByEventIdErrors, ThrowOnError>({
             security: [{
                     key: 'Prediction_ApiKeyAuth',
@@ -426,7 +426,7 @@ export class Prediction extends HeyApiClient {
         });
     }
     
-    public get4<ThrowOnError extends boolean = false>(options: Options<GetPredictionV1EventsSuggestedByPubkeyData, ThrowOnError>): RequestResult<GetPredictionV1EventsSuggestedByPubkeyResponses, unknown, ThrowOnError> {
+    public getPredictionV1EventsSuggestedPubkey<ThrowOnError extends boolean = false>(options: Options<GetPredictionV1EventsSuggestedByPubkeyData, ThrowOnError>): RequestResult<GetPredictionV1EventsSuggestedByPubkeyResponses, unknown, ThrowOnError> {
         return (options.client ?? this.client).get<GetPredictionV1EventsSuggestedByPubkeyResponses, unknown, ThrowOnError>({
             security: [{
                     key: 'Prediction_ApiKeyAuth',
@@ -438,7 +438,7 @@ export class Prediction extends HeyApiClient {
         });
     }
     
-    public get5<ThrowOnError extends boolean = false>(options: Options<GetPredictionV1EventsScoresData, ThrowOnError>): RequestResult<GetPredictionV1EventsScoresResponses, unknown, ThrowOnError> {
+    public getPredictionV1EventsScores<ThrowOnError extends boolean = false>(options: Options<GetPredictionV1EventsScoresData, ThrowOnError>): RequestResult<GetPredictionV1EventsScoresResponses, unknown, ThrowOnError> {
         return (options.client ?? this.client).get<GetPredictionV1EventsScoresResponses, unknown, ThrowOnError>({
             security: [{
                     key: 'Prediction_ApiKeyAuth',
@@ -450,7 +450,7 @@ export class Prediction extends HeyApiClient {
         });
     }
     
-    public get6<ThrowOnError extends boolean = false>(options: Options<GetPredictionV1EventsByEventIdScoreData, ThrowOnError>): RequestResult<GetPredictionV1EventsByEventIdScoreResponses, unknown, ThrowOnError> {
+    public getPredictionV1EventsEventIdScore<ThrowOnError extends boolean = false>(options: Options<GetPredictionV1EventsByEventIdScoreData, ThrowOnError>): RequestResult<GetPredictionV1EventsByEventIdScoreResponses, unknown, ThrowOnError> {
         return (options.client ?? this.client).get<GetPredictionV1EventsByEventIdScoreResponses, unknown, ThrowOnError>({
             security: [{
                     key: 'Prediction_ApiKeyAuth',
@@ -462,7 +462,7 @@ export class Prediction extends HeyApiClient {
         });
     }
     
-    public get7<ThrowOnError extends boolean = false>(options: Options<GetPredictionV1EventsByEventIdMarketsData, ThrowOnError>): RequestResult<GetPredictionV1EventsByEventIdMarketsResponses, unknown, ThrowOnError> {
+    public getPredictionV1EventsEventIdMarkets<ThrowOnError extends boolean = false>(options: Options<GetPredictionV1EventsByEventIdMarketsData, ThrowOnError>): RequestResult<GetPredictionV1EventsByEventIdMarketsResponses, unknown, ThrowOnError> {
         return (options.client ?? this.client).get<GetPredictionV1EventsByEventIdMarketsResponses, unknown, ThrowOnError>({
             security: [{
                     key: 'Prediction_ApiKeyAuth',
@@ -474,7 +474,7 @@ export class Prediction extends HeyApiClient {
         });
     }
     
-    public get8<ThrowOnError extends boolean = false>(options: Options<GetPredictionV1EventsByEventIdMarketsByMarketIdData, ThrowOnError>): RequestResult<GetPredictionV1EventsByEventIdMarketsByMarketIdResponses, GetPredictionV1EventsByEventIdMarketsByMarketIdErrors, ThrowOnError> {
+    public getPredictionV1EventsEventIdMarketsMarketId<ThrowOnError extends boolean = false>(options: Options<GetPredictionV1EventsByEventIdMarketsByMarketIdData, ThrowOnError>): RequestResult<GetPredictionV1EventsByEventIdMarketsByMarketIdResponses, GetPredictionV1EventsByEventIdMarketsByMarketIdErrors, ThrowOnError> {
         return (options.client ?? this.client).get<GetPredictionV1EventsByEventIdMarketsByMarketIdResponses, GetPredictionV1EventsByEventIdMarketsByMarketIdErrors, ThrowOnError>({
             security: [{
                     key: 'Prediction_ApiKeyAuth',
@@ -486,7 +486,7 @@ export class Prediction extends HeyApiClient {
         });
     }
     
-    public get9<ThrowOnError extends boolean = false>(options: Options<GetPredictionV1MarketsByMarketIdData, ThrowOnError>): RequestResult<GetPredictionV1MarketsByMarketIdResponses, GetPredictionV1MarketsByMarketIdErrors, ThrowOnError> {
+    public getPredictionV1MarketsMarketId<ThrowOnError extends boolean = false>(options: Options<GetPredictionV1MarketsByMarketIdData, ThrowOnError>): RequestResult<GetPredictionV1MarketsByMarketIdResponses, GetPredictionV1MarketsByMarketIdErrors, ThrowOnError> {
         return (options.client ?? this.client).get<GetPredictionV1MarketsByMarketIdResponses, GetPredictionV1MarketsByMarketIdErrors, ThrowOnError>({
             security: [{
                     key: 'Prediction_ApiKeyAuth',
@@ -498,7 +498,7 @@ export class Prediction extends HeyApiClient {
         });
     }
     
-    public get10<ThrowOnError extends boolean = false>(options?: Options<GetPredictionV1OrdersData, ThrowOnError>): RequestResult<GetPredictionV1OrdersResponses, GetPredictionV1OrdersErrors, ThrowOnError> {
+    public getPredictionV1Orders<ThrowOnError extends boolean = false>(options?: Options<GetPredictionV1OrdersData, ThrowOnError>): RequestResult<GetPredictionV1OrdersResponses, GetPredictionV1OrdersErrors, ThrowOnError> {
         return (options?.client ?? this.client).get<GetPredictionV1OrdersResponses, GetPredictionV1OrdersErrors, ThrowOnError>({
             security: [{
                     key: 'Prediction_ApiKeyAuth',
@@ -510,7 +510,7 @@ export class Prediction extends HeyApiClient {
         });
     }
     
-    public post<ThrowOnError extends boolean = false>(options: Options<PostPredictionV1OrdersData, ThrowOnError>): RequestResult<PostPredictionV1OrdersResponses, PostPredictionV1OrdersErrors, ThrowOnError> {
+    public postPredictionV1Orders<ThrowOnError extends boolean = false>(options: Options<PostPredictionV1OrdersData, ThrowOnError>): RequestResult<PostPredictionV1OrdersResponses, PostPredictionV1OrdersErrors, ThrowOnError> {
         return (options.client ?? this.client).post<PostPredictionV1OrdersResponses, PostPredictionV1OrdersErrors, ThrowOnError>({
             security: [{
                     key: 'Prediction_ApiKeyAuth',
@@ -531,7 +531,7 @@ export class Prediction extends HeyApiClient {
      *
      * Submit a signed order transaction for execution. Pass the base64 `signedTransaction` together with the `execution.context` object returned by the order build (`POST /orders`, or `DELETE /positions/{positionPubkey}` for a sell), unchanged. Jupiter Forecast (bisonfi) orders execute as an atomic swap through this endpoint and the transaction signature is returned on success.
      */
-    public post2<ThrowOnError extends boolean = false>(options: Options<PostPredictionV1ExecuteData, ThrowOnError>): RequestResult<PostPredictionV1ExecuteResponses, PostPredictionV1ExecuteErrors, ThrowOnError> {
+    public postPredictionV1Execute<ThrowOnError extends boolean = false>(options: Options<PostPredictionV1ExecuteData, ThrowOnError>): RequestResult<PostPredictionV1ExecuteResponses, PostPredictionV1ExecuteErrors, ThrowOnError> {
         return (options.client ?? this.client).post<PostPredictionV1ExecuteResponses, PostPredictionV1ExecuteErrors, ThrowOnError>({
             security: [{
                     key: 'Prediction_ApiKeyAuth',
@@ -547,7 +547,7 @@ export class Prediction extends HeyApiClient {
         });
     }
     
-    public get11<ThrowOnError extends boolean = false>(options: Options<GetPredictionV1OrdersByOrderPubkeyData, ThrowOnError>): RequestResult<GetPredictionV1OrdersByOrderPubkeyResponses, GetPredictionV1OrdersByOrderPubkeyErrors, ThrowOnError> {
+    public getPredictionV1OrdersOrderPubkey<ThrowOnError extends boolean = false>(options: Options<GetPredictionV1OrdersByOrderPubkeyData, ThrowOnError>): RequestResult<GetPredictionV1OrdersByOrderPubkeyResponses, GetPredictionV1OrdersByOrderPubkeyErrors, ThrowOnError> {
         return (options.client ?? this.client).get<GetPredictionV1OrdersByOrderPubkeyResponses, GetPredictionV1OrdersByOrderPubkeyErrors, ThrowOnError>({
             security: [{
                     key: 'Prediction_ApiKeyAuth',
@@ -559,7 +559,7 @@ export class Prediction extends HeyApiClient {
         });
     }
     
-    public get12<ThrowOnError extends boolean = false>(options: Options<GetPredictionV1OrdersStatusByOrderPubkeyData, ThrowOnError>): RequestResult<GetPredictionV1OrdersStatusByOrderPubkeyResponses, GetPredictionV1OrdersStatusByOrderPubkeyErrors, ThrowOnError> {
+    public getPredictionV1OrdersStatusOrderPubkey<ThrowOnError extends boolean = false>(options: Options<GetPredictionV1OrdersStatusByOrderPubkeyData, ThrowOnError>): RequestResult<GetPredictionV1OrdersStatusByOrderPubkeyResponses, GetPredictionV1OrdersStatusByOrderPubkeyErrors, ThrowOnError> {
         return (options.client ?? this.client).get<GetPredictionV1OrdersStatusByOrderPubkeyResponses, GetPredictionV1OrdersStatusByOrderPubkeyErrors, ThrowOnError>({
             security: [{
                     key: 'Prediction_ApiKeyAuth',
@@ -571,7 +571,7 @@ export class Prediction extends HeyApiClient {
         });
     }
     
-    public delete<ThrowOnError extends boolean = false>(options: Options<DeletePredictionV1PositionsData, ThrowOnError>): RequestResult<DeletePredictionV1PositionsResponses, DeletePredictionV1PositionsErrors, ThrowOnError> {
+    public deletePredictionV1Positions<ThrowOnError extends boolean = false>(options: Options<DeletePredictionV1PositionsData, ThrowOnError>): RequestResult<DeletePredictionV1PositionsResponses, DeletePredictionV1PositionsErrors, ThrowOnError> {
         return (options.client ?? this.client).delete<DeletePredictionV1PositionsResponses, DeletePredictionV1PositionsErrors, ThrowOnError>({
             security: [{
                     key: 'Prediction_ApiKeyAuth',
@@ -587,7 +587,7 @@ export class Prediction extends HeyApiClient {
         });
     }
     
-    public get13<ThrowOnError extends boolean = false>(options?: Options<GetPredictionV1PositionsData, ThrowOnError>): RequestResult<GetPredictionV1PositionsResponses, GetPredictionV1PositionsErrors, ThrowOnError> {
+    public getPredictionV1Positions<ThrowOnError extends boolean = false>(options?: Options<GetPredictionV1PositionsData, ThrowOnError>): RequestResult<GetPredictionV1PositionsResponses, GetPredictionV1PositionsErrors, ThrowOnError> {
         return (options?.client ?? this.client).get<GetPredictionV1PositionsResponses, GetPredictionV1PositionsErrors, ThrowOnError>({
             security: [{
                     key: 'Prediction_ApiKeyAuth',
@@ -599,7 +599,7 @@ export class Prediction extends HeyApiClient {
         });
     }
     
-    public delete2<ThrowOnError extends boolean = false>(options: Options<DeletePredictionV1PositionsByPositionPubkeyData, ThrowOnError>): RequestResult<DeletePredictionV1PositionsByPositionPubkeyResponses, DeletePredictionV1PositionsByPositionPubkeyErrors, ThrowOnError> {
+    public deletePredictionV1PositionsPositionPubkey<ThrowOnError extends boolean = false>(options: Options<DeletePredictionV1PositionsByPositionPubkeyData, ThrowOnError>): RequestResult<DeletePredictionV1PositionsByPositionPubkeyResponses, DeletePredictionV1PositionsByPositionPubkeyErrors, ThrowOnError> {
         return (options.client ?? this.client).delete<DeletePredictionV1PositionsByPositionPubkeyResponses, DeletePredictionV1PositionsByPositionPubkeyErrors, ThrowOnError>({
             security: [{
                     key: 'Prediction_ApiKeyAuth',
@@ -615,7 +615,7 @@ export class Prediction extends HeyApiClient {
         });
     }
     
-    public get14<ThrowOnError extends boolean = false>(options: Options<GetPredictionV1PositionsByPositionPubkeyData, ThrowOnError>): RequestResult<GetPredictionV1PositionsByPositionPubkeyResponses, GetPredictionV1PositionsByPositionPubkeyErrors, ThrowOnError> {
+    public getPredictionV1PositionsPositionPubkey<ThrowOnError extends boolean = false>(options: Options<GetPredictionV1PositionsByPositionPubkeyData, ThrowOnError>): RequestResult<GetPredictionV1PositionsByPositionPubkeyResponses, GetPredictionV1PositionsByPositionPubkeyErrors, ThrowOnError> {
         return (options.client ?? this.client).get<GetPredictionV1PositionsByPositionPubkeyResponses, GetPredictionV1PositionsByPositionPubkeyErrors, ThrowOnError>({
             security: [{
                     key: 'Prediction_ApiKeyAuth',
@@ -627,7 +627,7 @@ export class Prediction extends HeyApiClient {
         });
     }
     
-    public post3<ThrowOnError extends boolean = false>(options: Options<PostPredictionV1PositionsByPositionPubkeyClaimData, ThrowOnError>): RequestResult<PostPredictionV1PositionsByPositionPubkeyClaimResponses, PostPredictionV1PositionsByPositionPubkeyClaimErrors, ThrowOnError> {
+    public postPredictionV1PositionsPositionPubkeyClaim<ThrowOnError extends boolean = false>(options: Options<PostPredictionV1PositionsByPositionPubkeyClaimData, ThrowOnError>): RequestResult<PostPredictionV1PositionsByPositionPubkeyClaimResponses, PostPredictionV1PositionsByPositionPubkeyClaimErrors, ThrowOnError> {
         return (options.client ?? this.client).post<PostPredictionV1PositionsByPositionPubkeyClaimResponses, PostPredictionV1PositionsByPositionPubkeyClaimErrors, ThrowOnError>({
             security: [{
                     key: 'Prediction_ApiKeyAuth',
@@ -643,7 +643,7 @@ export class Prediction extends HeyApiClient {
         });
     }
     
-    public get15<ThrowOnError extends boolean = false>(options?: Options<GetPredictionV1HistoryData, ThrowOnError>): RequestResult<GetPredictionV1HistoryResponses, unknown, ThrowOnError> {
+    public getPredictionV1History<ThrowOnError extends boolean = false>(options?: Options<GetPredictionV1HistoryData, ThrowOnError>): RequestResult<GetPredictionV1HistoryResponses, unknown, ThrowOnError> {
         return (options?.client ?? this.client).get<GetPredictionV1HistoryResponses, unknown, ThrowOnError>({
             security: [{
                     key: 'Prediction_ApiKeyAuth',
@@ -655,7 +655,7 @@ export class Prediction extends HeyApiClient {
         });
     }
     
-    public get16<ThrowOnError extends boolean = false>(options: Options<GetPredictionV1ForecastData, ThrowOnError>): RequestResult<GetPredictionV1ForecastResponses, GetPredictionV1ForecastErrors, ThrowOnError> {
+    public getPredictionV1Forecast<ThrowOnError extends boolean = false>(options: Options<GetPredictionV1ForecastData, ThrowOnError>): RequestResult<GetPredictionV1ForecastResponses, GetPredictionV1ForecastErrors, ThrowOnError> {
         return (options.client ?? this.client).get<GetPredictionV1ForecastResponses, GetPredictionV1ForecastErrors, ThrowOnError>({
             security: [{
                     key: 'Prediction_ApiKeyAuth',
@@ -667,7 +667,7 @@ export class Prediction extends HeyApiClient {
         });
     }
     
-    public get17<ThrowOnError extends boolean = false>(options?: Options<GetPredictionV1TradingStatusData, ThrowOnError>): RequestResult<GetPredictionV1TradingStatusResponses, unknown, ThrowOnError> {
+    public getPredictionV1TradingStatus<ThrowOnError extends boolean = false>(options?: Options<GetPredictionV1TradingStatusData, ThrowOnError>): RequestResult<GetPredictionV1TradingStatusResponses, unknown, ThrowOnError> {
         return (options?.client ?? this.client).get<GetPredictionV1TradingStatusResponses, unknown, ThrowOnError>({
             security: [{
                     key: 'Prediction_ApiKeyAuth',
@@ -679,7 +679,7 @@ export class Prediction extends HeyApiClient {
         });
     }
     
-    public get18<ThrowOnError extends boolean = false>(options: Options<GetPredictionV1OrderbookByMarketIdData, ThrowOnError>): RequestResult<GetPredictionV1OrderbookByMarketIdResponses, GetPredictionV1OrderbookByMarketIdErrors, ThrowOnError> {
+    public getPredictionV1OrderbookMarketId<ThrowOnError extends boolean = false>(options: Options<GetPredictionV1OrderbookByMarketIdData, ThrowOnError>): RequestResult<GetPredictionV1OrderbookByMarketIdResponses, GetPredictionV1OrderbookByMarketIdErrors, ThrowOnError> {
         return (options.client ?? this.client).get<GetPredictionV1OrderbookByMarketIdResponses, GetPredictionV1OrderbookByMarketIdErrors, ThrowOnError>({
             security: [{
                     key: 'Prediction_ApiKeyAuth',
@@ -691,7 +691,7 @@ export class Prediction extends HeyApiClient {
         });
     }
     
-    public get19<ThrowOnError extends boolean = false>(options: Options<GetPredictionV1ProfilesByOwnerPubkeyData, ThrowOnError>): RequestResult<GetPredictionV1ProfilesByOwnerPubkeyResponses, GetPredictionV1ProfilesByOwnerPubkeyErrors, ThrowOnError> {
+    public getPredictionV1ProfilesOwnerPubkey<ThrowOnError extends boolean = false>(options: Options<GetPredictionV1ProfilesByOwnerPubkeyData, ThrowOnError>): RequestResult<GetPredictionV1ProfilesByOwnerPubkeyResponses, GetPredictionV1ProfilesByOwnerPubkeyErrors, ThrowOnError> {
         return (options.client ?? this.client).get<GetPredictionV1ProfilesByOwnerPubkeyResponses, GetPredictionV1ProfilesByOwnerPubkeyErrors, ThrowOnError>({
             security: [{
                     key: 'Prediction_ApiKeyAuth',
@@ -703,7 +703,7 @@ export class Prediction extends HeyApiClient {
         });
     }
     
-    public get20<ThrowOnError extends boolean = false>(options: Options<GetPredictionV1ProfilesByOwnerPubkeyPnlHistoryData, ThrowOnError>): RequestResult<GetPredictionV1ProfilesByOwnerPubkeyPnlHistoryResponses, unknown, ThrowOnError> {
+    public getPredictionV1ProfilesOwnerPubkeyPnlHistory<ThrowOnError extends boolean = false>(options: Options<GetPredictionV1ProfilesByOwnerPubkeyPnlHistoryData, ThrowOnError>): RequestResult<GetPredictionV1ProfilesByOwnerPubkeyPnlHistoryResponses, unknown, ThrowOnError> {
         return (options.client ?? this.client).get<GetPredictionV1ProfilesByOwnerPubkeyPnlHistoryResponses, unknown, ThrowOnError>({
             security: [{
                     key: 'Prediction_ApiKeyAuth',
@@ -715,7 +715,7 @@ export class Prediction extends HeyApiClient {
         });
     }
     
-    public get21<ThrowOnError extends boolean = false>(options?: Options<GetPredictionV1TradesData, ThrowOnError>): RequestResult<GetPredictionV1TradesResponses, unknown, ThrowOnError> {
+    public getPredictionV1Trades<ThrowOnError extends boolean = false>(options?: Options<GetPredictionV1TradesData, ThrowOnError>): RequestResult<GetPredictionV1TradesResponses, unknown, ThrowOnError> {
         return (options?.client ?? this.client).get<GetPredictionV1TradesResponses, unknown, ThrowOnError>({
             security: [{
                     key: 'Prediction_ApiKeyAuth',
@@ -727,7 +727,7 @@ export class Prediction extends HeyApiClient {
         });
     }
     
-    public get22<ThrowOnError extends boolean = false>(options?: Options<GetPredictionV1LeaderboardsData, ThrowOnError>): RequestResult<GetPredictionV1LeaderboardsResponses, unknown, ThrowOnError> {
+    public getPredictionV1Leaderboards<ThrowOnError extends boolean = false>(options?: Options<GetPredictionV1LeaderboardsData, ThrowOnError>): RequestResult<GetPredictionV1LeaderboardsResponses, unknown, ThrowOnError> {
         return (options?.client ?? this.client).get<GetPredictionV1LeaderboardsResponses, unknown, ThrowOnError>({
             security: [{
                     key: 'Prediction_ApiKeyAuth',
@@ -739,7 +739,7 @@ export class Prediction extends HeyApiClient {
         });
     }
     
-    public get23<ThrowOnError extends boolean = false>(options?: Options<GetPredictionV1VaultInfoData, ThrowOnError>): RequestResult<GetPredictionV1VaultInfoResponses, GetPredictionV1VaultInfoErrors, ThrowOnError> {
+    public getPredictionV1VaultInfo<ThrowOnError extends boolean = false>(options?: Options<GetPredictionV1VaultInfoData, ThrowOnError>): RequestResult<GetPredictionV1VaultInfoResponses, GetPredictionV1VaultInfoErrors, ThrowOnError> {
         return (options?.client ?? this.client).get<GetPredictionV1VaultInfoResponses, GetPredictionV1VaultInfoErrors, ThrowOnError>({
             security: [{
                     key: 'Prediction_ApiKeyAuth',
@@ -761,7 +761,7 @@ export class V2 extends HeyApiClient {
      *
      * @deprecated
      */
-    public get<ThrowOnError extends boolean = false>(options: Options<GetPriceV2Data, ThrowOnError>): RequestResult<GetPriceV2Responses, GetPriceV2Errors, ThrowOnError> {
+    public getPriceV2<ThrowOnError extends boolean = false>(options: Options<GetPriceV2Data, ThrowOnError>): RequestResult<GetPriceV2Responses, GetPriceV2Errors, ThrowOnError> {
         return (options.client ?? this.client).get<GetPriceV2Responses, GetPriceV2Errors, ThrowOnError>({
             security: [{
                     key: 'PriceV2_ApiKeyAuth',
@@ -781,7 +781,7 @@ export class V3 extends HeyApiClient {
      * Get USD prices for up to 50 tokens per request. Tokens without a reliable price are omitted from the response.
      *
      */
-    public get<ThrowOnError extends boolean = false>(options: Options<GetPriceV3Data, ThrowOnError>): RequestResult<GetPriceV3Responses, GetPriceV3Errors, ThrowOnError> {
+    public getPriceV3<ThrowOnError extends boolean = false>(options: Options<GetPriceV3Data, ThrowOnError>): RequestResult<GetPriceV3Responses, GetPriceV3Errors, ThrowOnError> {
         return (options.client ?? this.client).get<GetPriceV3Responses, GetPriceV3Errors, ThrowOnError>({
             security: [{
                     key: 'PriceV3_ApiKeyAuth',
@@ -876,7 +876,7 @@ export class Recurring extends HeyApiClient {
     /**
      * getRecurringOrders
      */
-    public get<ThrowOnError extends boolean = false>(options: Options<GetRecurringV1GetRecurringOrdersData, ThrowOnError>): RequestResult<GetRecurringV1GetRecurringOrdersResponses, GetRecurringV1GetRecurringOrdersErrors, ThrowOnError> {
+    public getRecurringV1GetRecurringOrders<ThrowOnError extends boolean = false>(options: Options<GetRecurringV1GetRecurringOrdersData, ThrowOnError>): RequestResult<GetRecurringV1GetRecurringOrdersResponses, GetRecurringV1GetRecurringOrdersErrors, ThrowOnError> {
         return (options.client ?? this.client).get<GetRecurringV1GetRecurringOrdersResponses, GetRecurringV1GetRecurringOrdersErrors, ThrowOnError>({
             security: [{
                     key: 'Recurring_ApiKeyAuth',
@@ -944,7 +944,7 @@ export class Send extends HeyApiClient {
      * Request for a base64-encoded unsigned Send transaction
      *
      */
-    public post<ThrowOnError extends boolean = false>(options: Options<PostSendV1CraftSendData, ThrowOnError>): RequestResult<PostSendV1CraftSendResponses, PostSendV1CraftSendErrors, ThrowOnError> {
+    public postSendV1CraftSend<ThrowOnError extends boolean = false>(options: Options<PostSendV1CraftSendData, ThrowOnError>): RequestResult<PostSendV1CraftSendResponses, PostSendV1CraftSendErrors, ThrowOnError> {
         return (options.client ?? this.client).post<PostSendV1CraftSendResponses, PostSendV1CraftSendErrors, ThrowOnError>({
             security: [{
                     key: 'Send_ApiKeyAuth',
@@ -966,7 +966,7 @@ export class Send extends HeyApiClient {
      * Request for a base64-encoded unsigned Send transaction
      *
      */
-    public post2<ThrowOnError extends boolean = false>(options: Options<PostSendV1CraftClawbackData, ThrowOnError>): RequestResult<PostSendV1CraftClawbackResponses, PostSendV1CraftClawbackErrors, ThrowOnError> {
+    public postSendV1CraftClawback<ThrowOnError extends boolean = false>(options: Options<PostSendV1CraftClawbackData, ThrowOnError>): RequestResult<PostSendV1CraftClawbackResponses, PostSendV1CraftClawbackErrors, ThrowOnError> {
         return (options.client ?? this.client).post<PostSendV1CraftClawbackResponses, PostSendV1CraftClawbackErrors, ThrowOnError>({
             security: [{
                     key: 'Send_ApiKeyAuth',
@@ -988,7 +988,7 @@ export class Send extends HeyApiClient {
      * Request for the pending invites of an address
      *
      */
-    public get<ThrowOnError extends boolean = false>(options: Options<GetSendV1PendingInvitesData, ThrowOnError>): RequestResult<GetSendV1PendingInvitesResponses, GetSendV1PendingInvitesErrors, ThrowOnError> {
+    public getSendV1PendingInvites<ThrowOnError extends boolean = false>(options: Options<GetSendV1PendingInvitesData, ThrowOnError>): RequestResult<GetSendV1PendingInvitesResponses, GetSendV1PendingInvitesErrors, ThrowOnError> {
         return (options.client ?? this.client).get<GetSendV1PendingInvitesResponses, GetSendV1PendingInvitesErrors, ThrowOnError>({
             security: [{
                     key: 'Send_ApiKeyAuth',
@@ -1006,7 +1006,7 @@ export class Send extends HeyApiClient {
      * Request for the invite history of an address
      *
      */
-    public get2<ThrowOnError extends boolean = false>(options: Options<GetSendV1InviteHistoryData, ThrowOnError>): RequestResult<GetSendV1InviteHistoryResponses, GetSendV1InviteHistoryErrors, ThrowOnError> {
+    public getSendV1InviteHistory<ThrowOnError extends boolean = false>(options: Options<GetSendV1InviteHistoryData, ThrowOnError>): RequestResult<GetSendV1InviteHistoryResponses, GetSendV1InviteHistoryErrors, ThrowOnError> {
         return (options.client ?? this.client).get<GetSendV1InviteHistoryResponses, GetSendV1InviteHistoryErrors, ThrowOnError>({
             security: [{
                     key: 'Send_ApiKeyAuth',
@@ -1026,7 +1026,7 @@ export class Studio extends HeyApiClient {
      * Request for a base64-encoded unsigned transaction to create a Dynamic Bonding Curve pool with token metadata
      *
      */
-    public post<ThrowOnError extends boolean = false>(options?: Options<PostStudioV1DbcPoolCreateTxData, ThrowOnError>): RequestResult<PostStudioV1DbcPoolCreateTxResponses, PostStudioV1DbcPoolCreateTxErrors, ThrowOnError> {
+    public postStudioV1DbcPoolCreateTx<ThrowOnError extends boolean = false>(options?: Options<PostStudioV1DbcPoolCreateTxData, ThrowOnError>): RequestResult<PostStudioV1DbcPoolCreateTxResponses, PostStudioV1DbcPoolCreateTxErrors, ThrowOnError> {
         return (options?.client ?? this.client).post<PostStudioV1DbcPoolCreateTxResponses, PostStudioV1DbcPoolCreateTxErrors, ThrowOnError>({
             security: [{
                     key: 'Studio_ApiKeyAuth',
@@ -1048,7 +1048,7 @@ export class Studio extends HeyApiClient {
      * Execute the signed transaction, and optionally upload content and header image
      *
      */
-    public post2<ThrowOnError extends boolean = false>(options?: Options<PostStudioV1DbcPoolSubmitData, ThrowOnError>): RequestResult<PostStudioV1DbcPoolSubmitResponses, PostStudioV1DbcPoolSubmitErrors, ThrowOnError> {
+    public postStudioV1DbcPoolSubmit<ThrowOnError extends boolean = false>(options?: Options<PostStudioV1DbcPoolSubmitData, ThrowOnError>): RequestResult<PostStudioV1DbcPoolSubmitResponses, PostStudioV1DbcPoolSubmitErrors, ThrowOnError> {
         return (options?.client ?? this.client).post<PostStudioV1DbcPoolSubmitResponses, PostStudioV1DbcPoolSubmitErrors, ThrowOnError>({
             ...formDataBodySerializer,
             security: [{
@@ -1071,7 +1071,7 @@ export class Studio extends HeyApiClient {
      * Request for pool addresses for a given token mint
      *
      */
-    public get<ThrowOnError extends boolean = false>(options: Options<GetStudioV1DbcPoolAddressesByMintData, ThrowOnError>): RequestResult<GetStudioV1DbcPoolAddressesByMintResponses, GetStudioV1DbcPoolAddressesByMintErrors, ThrowOnError> {
+    public getStudioV1DbcPoolAddressesMint<ThrowOnError extends boolean = false>(options: Options<GetStudioV1DbcPoolAddressesByMintData, ThrowOnError>): RequestResult<GetStudioV1DbcPoolAddressesByMintResponses, GetStudioV1DbcPoolAddressesByMintErrors, ThrowOnError> {
         return (options.client ?? this.client).get<GetStudioV1DbcPoolAddressesByMintResponses, GetStudioV1DbcPoolAddressesByMintErrors, ThrowOnError>({
             security: [{
                     key: 'Studio_ApiKeyAuth',
@@ -1089,7 +1089,7 @@ export class Studio extends HeyApiClient {
      * Request for unclaimed creator trading fees of a Dynamic Bonding Curve pool
      *
      */
-    public post3<ThrowOnError extends boolean = false>(options?: Options<PostStudioV1DbcFeeData, ThrowOnError>): RequestResult<PostStudioV1DbcFeeResponses, PostStudioV1DbcFeeErrors, ThrowOnError> {
+    public postStudioV1DbcFee<ThrowOnError extends boolean = false>(options?: Options<PostStudioV1DbcFeeData, ThrowOnError>): RequestResult<PostStudioV1DbcFeeResponses, PostStudioV1DbcFeeErrors, ThrowOnError> {
         return (options?.client ?? this.client).post<PostStudioV1DbcFeeResponses, PostStudioV1DbcFeeErrors, ThrowOnError>({
             security: [{
                     key: 'Studio_ApiKeyAuth',
@@ -1112,7 +1112,7 @@ export class Studio extends HeyApiClient {
      * - Handles both direct creator ownership and proxy-based ownership.
      *
      */
-    public post4<ThrowOnError extends boolean = false>(options?: Options<PostStudioV1DbcFeeCreateTxData, ThrowOnError>): RequestResult<PostStudioV1DbcFeeCreateTxResponses, PostStudioV1DbcFeeCreateTxErrors, ThrowOnError> {
+    public postStudioV1DbcFeeCreateTx<ThrowOnError extends boolean = false>(options?: Options<PostStudioV1DbcFeeCreateTxData, ThrowOnError>): RequestResult<PostStudioV1DbcFeeCreateTxResponses, PostStudioV1DbcFeeCreateTxErrors, ThrowOnError> {
         return (options?.client ?? this.client).post<PostStudioV1DbcFeeCreateTxResponses, PostStudioV1DbcFeeCreateTxErrors, ThrowOnError>({
             security: [{
                     key: 'Studio_ApiKeyAuth',
@@ -1308,7 +1308,7 @@ export class V12 extends HeyApiClient {
      *
      * @deprecated
      */
-    public get<ThrowOnError extends boolean = false>(options: Options<GetTokensV1TokenByMintAddressData, ThrowOnError>): RequestResult<GetTokensV1TokenByMintAddressResponses, unknown, ThrowOnError> {
+    public getTokensV1TokenMintAddress<ThrowOnError extends boolean = false>(options: Options<GetTokensV1TokenByMintAddressData, ThrowOnError>): RequestResult<GetTokensV1TokenByMintAddressResponses, unknown, ThrowOnError> {
         return (options.client ?? this.client).get<GetTokensV1TokenByMintAddressResponses, unknown, ThrowOnError>({
             security: [{
                     key: 'TokensV1_ApiKeyAuth',
@@ -1328,7 +1328,7 @@ export class V12 extends HeyApiClient {
      *
      * @deprecated
      */
-    public get2<ThrowOnError extends boolean = false>(options: Options<GetTokensV1MarketByMarketAddressMintsData, ThrowOnError>): RequestResult<GetTokensV1MarketByMarketAddressMintsResponses, unknown, ThrowOnError> {
+    public getTokensV1MarketMarketAddressMints<ThrowOnError extends boolean = false>(options: Options<GetTokensV1MarketByMarketAddressMintsData, ThrowOnError>): RequestResult<GetTokensV1MarketByMarketAddressMintsResponses, unknown, ThrowOnError> {
         return (options.client ?? this.client).get<GetTokensV1MarketByMarketAddressMintsResponses, unknown, ThrowOnError>({
             security: [{
                     key: 'TokensV1_ApiKeyAuth',
@@ -1348,7 +1348,7 @@ export class V12 extends HeyApiClient {
      *
      * @deprecated
      */
-    public get3<ThrowOnError extends boolean = false>(options?: Options<GetTokensV1MintsTradableData, ThrowOnError>): RequestResult<GetTokensV1MintsTradableResponses, unknown, ThrowOnError> {
+    public getTokensV1MintsTradable<ThrowOnError extends boolean = false>(options?: Options<GetTokensV1MintsTradableData, ThrowOnError>): RequestResult<GetTokensV1MintsTradableResponses, unknown, ThrowOnError> {
         return (options?.client ?? this.client).get<GetTokensV1MintsTradableResponses, unknown, ThrowOnError>({
             security: [{
                     key: 'TokensV1_ApiKeyAuth',
@@ -1368,7 +1368,7 @@ export class V12 extends HeyApiClient {
      *
      * @deprecated
      */
-    public get4<ThrowOnError extends boolean = false>(options: Options<GetTokensV1TaggedByTagData, ThrowOnError>): RequestResult<GetTokensV1TaggedByTagResponses, unknown, ThrowOnError> {
+    public getTokensV1TaggedTag<ThrowOnError extends boolean = false>(options: Options<GetTokensV1TaggedByTagData, ThrowOnError>): RequestResult<GetTokensV1TaggedByTagResponses, unknown, ThrowOnError> {
         return (options.client ?? this.client).get<GetTokensV1TaggedByTagResponses, unknown, ThrowOnError>({
             security: [{
                     key: 'TokensV1_ApiKeyAuth',
@@ -1388,7 +1388,7 @@ export class V12 extends HeyApiClient {
      *
      * @deprecated
      */
-    public get5<ThrowOnError extends boolean = false>(options?: Options<GetTokensV1NewData, ThrowOnError>): RequestResult<GetTokensV1NewResponses, unknown, ThrowOnError> {
+    public getTokensV1New<ThrowOnError extends boolean = false>(options?: Options<GetTokensV1NewData, ThrowOnError>): RequestResult<GetTokensV1NewResponses, unknown, ThrowOnError> {
         return (options?.client ?? this.client).get<GetTokensV1NewResponses, unknown, ThrowOnError>({
             security: [{
                     key: 'TokensV1_ApiKeyAuth',
@@ -1408,7 +1408,7 @@ export class V12 extends HeyApiClient {
      *
      * @deprecated
      */
-    public get6<ThrowOnError extends boolean = false>(options?: Options<GetTokensV1AllData, ThrowOnError>): RequestResult<GetTokensV1AllResponses, unknown, ThrowOnError> {
+    public getTokensV1All<ThrowOnError extends boolean = false>(options?: Options<GetTokensV1AllData, ThrowOnError>): RequestResult<GetTokensV1AllResponses, unknown, ThrowOnError> {
         return (options?.client ?? this.client).get<GetTokensV1AllResponses, unknown, ThrowOnError>({
             security: [{
                     key: 'TokensV1_ApiKeyAuth',
@@ -1430,7 +1430,7 @@ export class Verification extends HeyApiClient {
      * before payment is charged.
      *
      */
-    public get<ThrowOnError extends boolean = false>(options: Options<GetTokensV2VerifyExpressCheckEligibilityData, ThrowOnError>): RequestResult<GetTokensV2VerifyExpressCheckEligibilityResponses, GetTokensV2VerifyExpressCheckEligibilityErrors, ThrowOnError> {
+    public getTokensV2VerifyExpressCheckEligibility<ThrowOnError extends boolean = false>(options: Options<GetTokensV2VerifyExpressCheckEligibilityData, ThrowOnError>): RequestResult<GetTokensV2VerifyExpressCheckEligibilityResponses, GetTokensV2VerifyExpressCheckEligibilityErrors, ThrowOnError> {
         return (options.client ?? this.client).get<GetTokensV2VerifyExpressCheckEligibilityResponses, GetTokensV2VerifyExpressCheckEligibilityErrors, ThrowOnError>({
             security: [{
                     key: 'TokensV2Verification_ApiKeyAuth',
@@ -1450,7 +1450,7 @@ export class Verification extends HeyApiClient {
      * 1000 JUP. The `requestId` in the response is required for the execute step.
      *
      */
-    public get2<ThrowOnError extends boolean = false>(options: Options<GetTokensV2VerifyExpressCraftTxnData, ThrowOnError>): RequestResult<GetTokensV2VerifyExpressCraftTxnResponses, GetTokensV2VerifyExpressCraftTxnErrors, ThrowOnError> {
+    public getTokensV2VerifyExpressCraftTxn<ThrowOnError extends boolean = false>(options: Options<GetTokensV2VerifyExpressCraftTxnData, ThrowOnError>): RequestResult<GetTokensV2VerifyExpressCraftTxnResponses, GetTokensV2VerifyExpressCraftTxnErrors, ThrowOnError> {
         return (options.client ?? this.client).get<GetTokensV2VerifyExpressCraftTxnResponses, GetTokensV2VerifyExpressCraftTxnErrors, ThrowOnError>({
             security: [{
                     key: 'TokensV2Verification_ApiKeyAuth',
@@ -1470,7 +1470,7 @@ export class Verification extends HeyApiClient {
      * updates are reviewed independently.
      *
      */
-    public post<ThrowOnError extends boolean = false>(options: Options<PostTokensV2VerifyExpressExecuteData, ThrowOnError>): RequestResult<PostTokensV2VerifyExpressExecuteResponses, PostTokensV2VerifyExpressExecuteErrors, ThrowOnError> {
+    public postTokensV2VerifyExpressExecute<ThrowOnError extends boolean = false>(options: Options<PostTokensV2VerifyExpressExecuteData, ThrowOnError>): RequestResult<PostTokensV2VerifyExpressExecuteResponses, PostTokensV2VerifyExpressExecuteErrors, ThrowOnError> {
         return (options.client ?? this.client).post<PostTokensV2VerifyExpressExecuteResponses, PostTokensV2VerifyExpressExecuteErrors, ThrowOnError>({
             security: [{
                     key: 'TokensV2Verification_ApiKeyAuth',
@@ -1494,7 +1494,7 @@ export class V23 extends HeyApiClient {
      * Request a search by token's symbol, name or mint address
      *
      */
-    public get<ThrowOnError extends boolean = false>(options: Options<GetTokensV2SearchData, ThrowOnError>): RequestResult<GetTokensV2SearchResponses, GetTokensV2SearchErrors, ThrowOnError> {
+    public getTokensV2Search<ThrowOnError extends boolean = false>(options: Options<GetTokensV2SearchData, ThrowOnError>): RequestResult<GetTokensV2SearchResponses, GetTokensV2SearchErrors, ThrowOnError> {
         return (options.client ?? this.client).get<GetTokensV2SearchResponses, GetTokensV2SearchErrors, ThrowOnError>({
             security: [{
                     key: 'TokensV2_ApiKeyAuth',
@@ -1513,7 +1513,7 @@ export class V23 extends HeyApiClient {
      * - Note that this will return the entire array of existing mints that belongs to the tag.
      *
      */
-    public get2<ThrowOnError extends boolean = false>(options: Options<GetTokensV2TagData, ThrowOnError>): RequestResult<GetTokensV2TagResponses, GetTokensV2TagErrors, ThrowOnError> {
+    public getTokensV2Tag<ThrowOnError extends boolean = false>(options: Options<GetTokensV2TagData, ThrowOnError>): RequestResult<GetTokensV2TagResponses, GetTokensV2TagErrors, ThrowOnError> {
         return (options.client ?? this.client).get<GetTokensV2TagResponses, GetTokensV2TagErrors, ThrowOnError>({
             security: [{
                     key: 'TokensV2_ApiKeyAuth',
@@ -1531,7 +1531,7 @@ export class V23 extends HeyApiClient {
      * Returns an array of mints and their information for the given category and interval
      *
      */
-    public get3<ThrowOnError extends boolean = false>(options: Options<GetTokensV2ByCategoryByIntervalData, ThrowOnError>): RequestResult<GetTokensV2ByCategoryByIntervalResponses, GetTokensV2ByCategoryByIntervalErrors, ThrowOnError> {
+    public getTokensV2CategoryInterval<ThrowOnError extends boolean = false>(options: Options<GetTokensV2ByCategoryByIntervalData, ThrowOnError>): RequestResult<GetTokensV2ByCategoryByIntervalResponses, GetTokensV2ByCategoryByIntervalErrors, ThrowOnError> {
         return (options.client ?? this.client).get<GetTokensV2ByCategoryByIntervalResponses, GetTokensV2ByCategoryByIntervalErrors, ThrowOnError>({
             security: [{
                     key: 'TokensV2_ApiKeyAuth',
@@ -1550,7 +1550,7 @@ export class V23 extends HeyApiClient {
      * - Default to 30 mints in response
      *
      */
-    public get4<ThrowOnError extends boolean = false>(options?: Options<GetTokensV2RecentData, ThrowOnError>): RequestResult<GetTokensV2RecentResponses, GetTokensV2RecentErrors, ThrowOnError> {
+    public getTokensV2Recent<ThrowOnError extends boolean = false>(options?: Options<GetTokensV2RecentData, ThrowOnError>): RequestResult<GetTokensV2RecentResponses, GetTokensV2RecentErrors, ThrowOnError> {
         return (options?.client ?? this.client).get<GetTokensV2RecentResponses, GetTokensV2RecentErrors, ThrowOnError>({
             security: [{
                     key: 'TokensV2_ApiKeyAuth',
@@ -1587,7 +1587,7 @@ export class V13 extends HeyApiClient {
      * Request for a base64-encoded unsigned trigger order cancellation transaction(s) to be used in `POST /trigger/v1/execute`
      *
      */
-    public post<ThrowOnError extends boolean = false>(options?: Options<PostTriggerV1CancelOrdersData, ThrowOnError>): RequestResult<PostTriggerV1CancelOrdersResponses, PostTriggerV1CancelOrdersErrors, ThrowOnError> {
+    public postTriggerV1CancelOrders<ThrowOnError extends boolean = false>(options?: Options<PostTriggerV1CancelOrdersData, ThrowOnError>): RequestResult<PostTriggerV1CancelOrdersResponses, PostTriggerV1CancelOrdersErrors, ThrowOnError> {
         return (options?.client ?? this.client).post<PostTriggerV1CancelOrdersResponses, PostTriggerV1CancelOrdersErrors, ThrowOnError>({
             security: [{
                     key: 'TriggerV1_ApiKeyAuth',
@@ -1609,7 +1609,7 @@ export class V13 extends HeyApiClient {
      * Request for a base64-encoded unsigned trigger order creation transaction to be used in `POST /trigger/v1/execute`
      *
      */
-    public post2<ThrowOnError extends boolean = false>(options?: Options<PostTriggerV1CreateOrderData, ThrowOnError>): RequestResult<PostTriggerV1CreateOrderResponses, PostTriggerV1CreateOrderErrors, ThrowOnError> {
+    public postTriggerV1CreateOrder<ThrowOnError extends boolean = false>(options?: Options<PostTriggerV1CreateOrderData, ThrowOnError>): RequestResult<PostTriggerV1CreateOrderResponses, PostTriggerV1CreateOrderErrors, ThrowOnError> {
         return (options?.client ?? this.client).post<PostTriggerV1CreateOrderResponses, PostTriggerV1CreateOrderErrors, ThrowOnError>({
             security: [{
                     key: 'TriggerV1_ApiKeyAuth',
@@ -1631,7 +1631,7 @@ export class V13 extends HeyApiClient {
      * Request for a base64-encoded unsigned trigger order cancellation transaction to be used in `POST /trigger/v1/execute`
      *
      */
-    public post3<ThrowOnError extends boolean = false>(options?: Options<PostTriggerV1CancelOrderData, ThrowOnError>): RequestResult<PostTriggerV1CancelOrderResponses, PostTriggerV1CancelOrderErrors, ThrowOnError> {
+    public postTriggerV1CancelOrder<ThrowOnError extends boolean = false>(options?: Options<PostTriggerV1CancelOrderData, ThrowOnError>): RequestResult<PostTriggerV1CancelOrderResponses, PostTriggerV1CancelOrderErrors, ThrowOnError> {
         return (options?.client ?? this.client).post<PostTriggerV1CancelOrderResponses, PostTriggerV1CancelOrderErrors, ThrowOnError>({
             security: [{
                     key: 'TriggerV1_ApiKeyAuth',
@@ -1653,7 +1653,7 @@ export class V13 extends HeyApiClient {
      * Execute the signed transaction and get the execution status
      *
      */
-    public post4<ThrowOnError extends boolean = false>(options: Options<PostTriggerV1ExecuteData, ThrowOnError>): RequestResult<PostTriggerV1ExecuteResponses, PostTriggerV1ExecuteErrors, ThrowOnError> {
+    public postTriggerV1Execute<ThrowOnError extends boolean = false>(options: Options<PostTriggerV1ExecuteData, ThrowOnError>): RequestResult<PostTriggerV1ExecuteResponses, PostTriggerV1ExecuteErrors, ThrowOnError> {
         return (options.client ?? this.client).post<PostTriggerV1ExecuteResponses, PostTriggerV1ExecuteErrors, ThrowOnError>({
             security: [{
                     key: 'TriggerV1_ApiKeyAuth',
@@ -1675,7 +1675,7 @@ export class V13 extends HeyApiClient {
      * Request for the active or historical orders associated to the provided account
      *
      */
-    public get<ThrowOnError extends boolean = false>(options: Options<GetTriggerV1GetTriggerOrdersData, ThrowOnError>): RequestResult<GetTriggerV1GetTriggerOrdersResponses, GetTriggerV1GetTriggerOrdersErrors, ThrowOnError> {
+    public getTriggerV1GetTriggerOrders<ThrowOnError extends boolean = false>(options: Options<GetTriggerV1GetTriggerOrdersData, ThrowOnError>): RequestResult<GetTriggerV1GetTriggerOrdersResponses, GetTriggerV1GetTriggerOrdersErrors, ThrowOnError> {
         return (options.client ?? this.client).get<GetTriggerV1GetTriggerOrdersResponses, GetTriggerV1GetTriggerOrdersErrors, ThrowOnError>({
             security: [{
                     key: 'TriggerV1_ApiKeyAuth',
@@ -1697,7 +1697,7 @@ export class V24 extends HeyApiClient {
      * Challenges expire after 5 minutes.
      *
      */
-    public post<ThrowOnError extends boolean = false>(options: Options<PostTriggerV2AuthChallengeData, ThrowOnError>): RequestResult<PostTriggerV2AuthChallengeResponses, PostTriggerV2AuthChallengeErrors, ThrowOnError> {
+    public postTriggerV2AuthChallenge<ThrowOnError extends boolean = false>(options: Options<PostTriggerV2AuthChallengeData, ThrowOnError>): RequestResult<PostTriggerV2AuthChallengeResponses, PostTriggerV2AuthChallengeErrors, ThrowOnError> {
         return (options.client ?? this.client).post<PostTriggerV2AuthChallengeResponses, PostTriggerV2AuthChallengeErrors, ThrowOnError>({
             security: [{
                     key: 'TriggerV2_ApiKeyAuth',
@@ -1720,7 +1720,7 @@ export class V24 extends HeyApiClient {
      * Include the JWT in all subsequent authenticated requests via the `Authorization: Bearer` header.
      *
      */
-    public post2<ThrowOnError extends boolean = false>(options: Options<PostTriggerV2AuthVerifyData, ThrowOnError>): RequestResult<PostTriggerV2AuthVerifyResponses, PostTriggerV2AuthVerifyErrors, ThrowOnError> {
+    public postTriggerV2AuthVerify<ThrowOnError extends boolean = false>(options: Options<PostTriggerV2AuthVerifyData, ThrowOnError>): RequestResult<PostTriggerV2AuthVerifyResponses, PostTriggerV2AuthVerifyErrors, ThrowOnError> {
         return (options.client ?? this.client).post<PostTriggerV2AuthVerifyResponses, PostTriggerV2AuthVerifyErrors, ThrowOnError>({
             security: [{
                     key: 'TriggerV2_ApiKeyAuth',
@@ -1741,7 +1741,7 @@ export class V24 extends HeyApiClient {
      *
      * Retrieve the vault associated with your authenticated wallet.
      */
-    public get<ThrowOnError extends boolean = false>(options?: Options<GetTriggerV2VaultData, ThrowOnError>): RequestResult<GetTriggerV2VaultResponses, GetTriggerV2VaultErrors, ThrowOnError> {
+    public getTriggerV2Vault<ThrowOnError extends boolean = false>(options?: Options<GetTriggerV2VaultData, ThrowOnError>): RequestResult<GetTriggerV2VaultResponses, GetTriggerV2VaultErrors, ThrowOnError> {
         return (options?.client ?? this.client).get<GetTriggerV2VaultResponses, GetTriggerV2VaultErrors, ThrowOnError>({
             security: [{
                     key: 'TriggerV2_ApiKeyAuth',
@@ -1760,7 +1760,7 @@ export class V24 extends HeyApiClient {
      * Call this once per wallet. Subsequent calls return the existing vault.
      *
      */
-    public get2<ThrowOnError extends boolean = false>(options?: Options<GetTriggerV2VaultRegisterData, ThrowOnError>): RequestResult<GetTriggerV2VaultRegisterResponses, GetTriggerV2VaultRegisterErrors, ThrowOnError> {
+    public getTriggerV2VaultRegister<ThrowOnError extends boolean = false>(options?: Options<GetTriggerV2VaultRegisterData, ThrowOnError>): RequestResult<GetTriggerV2VaultRegisterResponses, GetTriggerV2VaultRegisterErrors, ThrowOnError> {
         return (options?.client ?? this.client).get<GetTriggerV2VaultRegisterResponses, GetTriggerV2VaultRegisterErrors, ThrowOnError>({
             security: [{
                     key: 'TriggerV2_ApiKeyAuth',
@@ -1779,7 +1779,7 @@ export class V24 extends HeyApiClient {
      * The vault address is automatically resolved from your JWT token.
      *
      */
-    public post3<ThrowOnError extends boolean = false>(options: Options<PostTriggerV2DepositCraftData, ThrowOnError>): RequestResult<PostTriggerV2DepositCraftResponses, PostTriggerV2DepositCraftErrors, ThrowOnError> {
+    public postTriggerV2DepositCraft<ThrowOnError extends boolean = false>(options: Options<PostTriggerV2DepositCraftData, ThrowOnError>): RequestResult<PostTriggerV2DepositCraftResponses, PostTriggerV2DepositCraftErrors, ThrowOnError> {
         return (options.client ?? this.client).post<PostTriggerV2DepositCraftResponses, PostTriggerV2DepositCraftErrors, ThrowOnError>({
             security: [{
                     key: 'TriggerV2_ApiKeyAuth',
@@ -1804,7 +1804,7 @@ export class V24 extends HeyApiClient {
      * - `otoco`: parent trigger activates a TP/SL pair on fill
      *
      */
-    public post4<ThrowOnError extends boolean = false>(options: Options<PostTriggerV2OrdersPriceData, ThrowOnError>): RequestResult<PostTriggerV2OrdersPriceResponses, PostTriggerV2OrdersPriceErrors, ThrowOnError> {
+    public postTriggerV2OrdersPrice<ThrowOnError extends boolean = false>(options: Options<PostTriggerV2OrdersPriceData, ThrowOnError>): RequestResult<PostTriggerV2OrdersPriceResponses, PostTriggerV2OrdersPriceErrors, ThrowOnError> {
         return (options.client ?? this.client).post<PostTriggerV2OrdersPriceResponses, PostTriggerV2OrdersPriceErrors, ThrowOnError>({
             security: [{
                     key: 'TriggerV2_ApiKeyAuth',
@@ -1825,7 +1825,7 @@ export class V24 extends HeyApiClient {
      *
      * Update trigger price or slippage of an existing order.
      */
-    public patch<ThrowOnError extends boolean = false>(options: Options<PatchTriggerV2OrdersPriceByOrderIdData, ThrowOnError>): RequestResult<PatchTriggerV2OrdersPriceByOrderIdResponses, PatchTriggerV2OrdersPriceByOrderIdErrors, ThrowOnError> {
+    public patchTriggerV2OrdersPriceOrderId<ThrowOnError extends boolean = false>(options: Options<PatchTriggerV2OrdersPriceByOrderIdData, ThrowOnError>): RequestResult<PatchTriggerV2OrdersPriceByOrderIdResponses, PatchTriggerV2OrdersPriceByOrderIdErrors, ThrowOnError> {
         return (options.client ?? this.client).patch<PatchTriggerV2OrdersPriceByOrderIdResponses, PatchTriggerV2OrdersPriceByOrderIdErrors, ThrowOnError>({
             security: [{
                     key: 'TriggerV2_ApiKeyAuth',
@@ -1848,7 +1848,7 @@ export class V24 extends HeyApiClient {
      * that must be signed and submitted via the confirm-cancel endpoint.
      *
      */
-    public post5<ThrowOnError extends boolean = false>(options: Options<PostTriggerV2OrdersPriceCancelByOrderIdData, ThrowOnError>): RequestResult<PostTriggerV2OrdersPriceCancelByOrderIdResponses, PostTriggerV2OrdersPriceCancelByOrderIdErrors, ThrowOnError> {
+    public postTriggerV2OrdersPriceCancelOrderId<ThrowOnError extends boolean = false>(options: Options<PostTriggerV2OrdersPriceCancelByOrderIdData, ThrowOnError>): RequestResult<PostTriggerV2OrdersPriceCancelByOrderIdResponses, PostTriggerV2OrdersPriceCancelByOrderIdErrors, ThrowOnError> {
         return (options.client ?? this.client).post<PostTriggerV2OrdersPriceCancelByOrderIdResponses, PostTriggerV2OrdersPriceCancelByOrderIdErrors, ThrowOnError>({
             security: [{
                     key: 'TriggerV2_ApiKeyAuth',
@@ -1867,7 +1867,7 @@ export class V24 extends HeyApiClient {
      * to complete the cancellation and return funds to your wallet.
      *
      */
-    public post6<ThrowOnError extends boolean = false>(options: Options<PostTriggerV2OrdersPriceConfirmCancelByOrderIdData, ThrowOnError>): RequestResult<PostTriggerV2OrdersPriceConfirmCancelByOrderIdResponses, PostTriggerV2OrdersPriceConfirmCancelByOrderIdErrors, ThrowOnError> {
+    public postTriggerV2OrdersPriceConfirmCancelOrderId<ThrowOnError extends boolean = false>(options: Options<PostTriggerV2OrdersPriceConfirmCancelByOrderIdData, ThrowOnError>): RequestResult<PostTriggerV2OrdersPriceConfirmCancelByOrderIdResponses, PostTriggerV2OrdersPriceConfirmCancelByOrderIdErrors, ThrowOnError> {
         return (options.client ?? this.client).post<PostTriggerV2OrdersPriceConfirmCancelByOrderIdResponses, PostTriggerV2OrdersPriceConfirmCancelByOrderIdErrors, ThrowOnError>({
             security: [{
                     key: 'TriggerV2_ApiKeyAuth',
@@ -1890,7 +1890,7 @@ export class V24 extends HeyApiClient {
      * Filter by state, mint, and sort order.
      *
      */
-    public get3<ThrowOnError extends boolean = false>(options?: Options<GetTriggerV2OrdersHistoryData, ThrowOnError>): RequestResult<GetTriggerV2OrdersHistoryResponses, GetTriggerV2OrdersHistoryErrors, ThrowOnError> {
+    public getTriggerV2OrdersHistory<ThrowOnError extends boolean = false>(options?: Options<GetTriggerV2OrdersHistoryData, ThrowOnError>): RequestResult<GetTriggerV2OrdersHistoryResponses, GetTriggerV2OrdersHistoryErrors, ThrowOnError> {
         return (options?.client ?? this.client).get<GetTriggerV2OrdersHistoryResponses, GetTriggerV2OrdersHistoryErrors, ThrowOnError>({
             security: [{
                     key: 'TriggerV2_ApiKeyAuth',
@@ -1916,7 +1916,7 @@ export class V24 extends HeyApiClient {
      * and the output settles directly to the taker's wallet.
      *
      */
-    public post7<ThrowOnError extends boolean = false>(options: Options<PostTriggerV2OrdersDcaData, ThrowOnError>): RequestResult<PostTriggerV2OrdersDcaResponses, PostTriggerV2OrdersDcaErrors, ThrowOnError> {
+    public postTriggerV2OrdersDca<ThrowOnError extends boolean = false>(options: Options<PostTriggerV2OrdersDcaData, ThrowOnError>): RequestResult<PostTriggerV2OrdersDcaResponses, PostTriggerV2OrdersDcaErrors, ThrowOnError> {
         return (options.client ?? this.client).post<PostTriggerV2OrdersDcaResponses, PostTriggerV2OrdersDcaErrors, ThrowOnError>({
             security: [{
                     key: 'TriggerV2_ApiKeyAuth',
@@ -1940,7 +1940,7 @@ export class V24 extends HeyApiClient {
      * not reversed.
      *
      */
-    public post8<ThrowOnError extends boolean = false>(options: Options<PostTriggerV2OrdersDcaCancelByIdData, ThrowOnError>): RequestResult<PostTriggerV2OrdersDcaCancelByIdResponses, PostTriggerV2OrdersDcaCancelByIdErrors, ThrowOnError> {
+    public postTriggerV2OrdersDcaCancelId<ThrowOnError extends boolean = false>(options: Options<PostTriggerV2OrdersDcaCancelByIdData, ThrowOnError>): RequestResult<PostTriggerV2OrdersDcaCancelByIdResponses, PostTriggerV2OrdersDcaCancelByIdErrors, ThrowOnError> {
         return (options.client ?? this.client).post<PostTriggerV2OrdersDcaCancelByIdResponses, PostTriggerV2OrdersDcaCancelByIdErrors, ThrowOnError>({
             security: [{
                     key: 'TriggerV2_ApiKeyAuth',
@@ -1959,7 +1959,7 @@ export class V24 extends HeyApiClient {
      * the remaining funds and move the order to `cancelled`.
      *
      */
-    public post9<ThrowOnError extends boolean = false>(options: Options<PostTriggerV2OrdersDcaConfirmCancelByIdData, ThrowOnError>): RequestResult<PostTriggerV2OrdersDcaConfirmCancelByIdResponses, PostTriggerV2OrdersDcaConfirmCancelByIdErrors, ThrowOnError> {
+    public postTriggerV2OrdersDcaConfirmCancelId<ThrowOnError extends boolean = false>(options: Options<PostTriggerV2OrdersDcaConfirmCancelByIdData, ThrowOnError>): RequestResult<PostTriggerV2OrdersDcaConfirmCancelByIdResponses, PostTriggerV2OrdersDcaConfirmCancelByIdErrors, ThrowOnError> {
         return (options.client ?? this.client).post<PostTriggerV2OrdersDcaConfirmCancelByIdResponses, PostTriggerV2OrdersDcaConfirmCancelByIdErrors, ThrowOnError>({
             security: [{
                     key: 'TriggerV2_ApiKeyAuth',
@@ -1980,7 +1980,7 @@ export class V24 extends HeyApiClient {
      *
      * List the authenticated wallet's DCA orders with full event history.
      */
-    public get4<ThrowOnError extends boolean = false>(options?: Options<GetTriggerV2OrdersHistoryDcaData, ThrowOnError>): RequestResult<GetTriggerV2OrdersHistoryDcaResponses, GetTriggerV2OrdersHistoryDcaErrors, ThrowOnError> {
+    public getTriggerV2OrdersHistoryDca<ThrowOnError extends boolean = false>(options?: Options<GetTriggerV2OrdersHistoryDcaData, ThrowOnError>): RequestResult<GetTriggerV2OrdersHistoryDcaResponses, GetTriggerV2OrdersHistoryDcaErrors, ThrowOnError> {
         return (options?.client ?? this.client).get<GetTriggerV2OrdersHistoryDcaResponses, GetTriggerV2OrdersHistoryDcaErrors, ThrowOnError>({
             security: [{
                     key: 'TriggerV2_ApiKeyAuth',
@@ -1999,7 +1999,7 @@ export class V24 extends HeyApiClient {
      * the `dca` segment.
      *
      */
-    public get5<ThrowOnError extends boolean = false>(options: Options<GetTriggerV2OrdersHistoryDcaByIdData, ThrowOnError>): RequestResult<GetTriggerV2OrdersHistoryDcaByIdResponses, GetTriggerV2OrdersHistoryDcaByIdErrors, ThrowOnError> {
+    public getTriggerV2OrdersHistoryDcaId<ThrowOnError extends boolean = false>(options: Options<GetTriggerV2OrdersHistoryDcaByIdData, ThrowOnError>): RequestResult<GetTriggerV2OrdersHistoryDcaByIdResponses, GetTriggerV2OrdersHistoryDcaByIdErrors, ThrowOnError> {
         return (options.client ?? this.client).get<GetTriggerV2OrdersHistoryDcaByIdResponses, GetTriggerV2OrdersHistoryDcaByIdErrors, ThrowOnError>({
             security: [{
                     key: 'TriggerV2_ApiKeyAuth',
@@ -2031,7 +2031,7 @@ export class Ultra extends HeyApiClient {
      * Request for a base64-encoded unsigned swap transaction to be used in `POST /ultra/v1/execute`
      *
      */
-    public get<ThrowOnError extends boolean = false>(options: Options<GetUltraV1OrderData, ThrowOnError>): RequestResult<GetUltraV1OrderResponses, GetUltraV1OrderErrors, ThrowOnError> {
+    public getUltraV1Order<ThrowOnError extends boolean = false>(options: Options<GetUltraV1OrderData, ThrowOnError>): RequestResult<GetUltraV1OrderResponses, GetUltraV1OrderErrors, ThrowOnError> {
         return (options.client ?? this.client).get<GetUltraV1OrderResponses, GetUltraV1OrderErrors, ThrowOnError>({
             security: [{
                     key: 'Ultra_ApiKeyAuth',
@@ -2049,7 +2049,7 @@ export class Ultra extends HeyApiClient {
      * Execute the signed transaction and get the execution status
      *
      */
-    public post<ThrowOnError extends boolean = false>(options?: Options<PostUltraV1ExecuteData, ThrowOnError>): RequestResult<PostUltraV1ExecuteResponses, PostUltraV1ExecuteErrors, ThrowOnError> {
+    public postUltraV1Execute<ThrowOnError extends boolean = false>(options?: Options<PostUltraV1ExecuteData, ThrowOnError>): RequestResult<PostUltraV1ExecuteResponses, PostUltraV1ExecuteErrors, ThrowOnError> {
         return (options?.client ?? this.client).post<PostUltraV1ExecuteResponses, PostUltraV1ExecuteErrors, ThrowOnError>({
             security: [{
                     key: 'Ultra_ApiKeyAuth',
@@ -2073,7 +2073,7 @@ export class Ultra extends HeyApiClient {
      *
      * @deprecated
      */
-    public get2<ThrowOnError extends boolean = false>(options: Options<GetUltraV1BalancesByAddressData, ThrowOnError>): RequestResult<GetUltraV1BalancesByAddressResponses, GetUltraV1BalancesByAddressErrors, ThrowOnError> {
+    public getUltraV1BalancesAddress<ThrowOnError extends boolean = false>(options: Options<GetUltraV1BalancesByAddressData, ThrowOnError>): RequestResult<GetUltraV1BalancesByAddressResponses, GetUltraV1BalancesByAddressErrors, ThrowOnError> {
         return (options.client ?? this.client).get<GetUltraV1BalancesByAddressResponses, GetUltraV1BalancesByAddressErrors, ThrowOnError>({
             security: [{
                     key: 'Ultra_ApiKeyAuth',
@@ -2091,7 +2091,7 @@ export class Ultra extends HeyApiClient {
      * Request for token balances of an account including token account information
      *
      */
-    public get3<ThrowOnError extends boolean = false>(options: Options<GetUltraV1HoldingsByAddressData, ThrowOnError>): RequestResult<GetUltraV1HoldingsByAddressResponses, unknown, ThrowOnError> {
+    public getUltraV1HoldingsAddress<ThrowOnError extends boolean = false>(options: Options<GetUltraV1HoldingsByAddressData, ThrowOnError>): RequestResult<GetUltraV1HoldingsByAddressResponses, unknown, ThrowOnError> {
         return (options.client ?? this.client).get<GetUltraV1HoldingsByAddressResponses, unknown, ThrowOnError>({
             security: [{
                     key: 'Ultra_ApiKeyAuth',
@@ -2109,7 +2109,7 @@ export class Ultra extends HeyApiClient {
      * Request for native SOL holdings only, without other tokens
      *
      */
-    public get4<ThrowOnError extends boolean = false>(options: Options<GetUltraV1HoldingsByAddressNativeData, ThrowOnError>): RequestResult<GetUltraV1HoldingsByAddressNativeResponses, unknown, ThrowOnError> {
+    public getUltraV1HoldingsAddressNative<ThrowOnError extends boolean = false>(options: Options<GetUltraV1HoldingsByAddressNativeData, ThrowOnError>): RequestResult<GetUltraV1HoldingsByAddressNativeResponses, unknown, ThrowOnError> {
         return (options.client ?? this.client).get<GetUltraV1HoldingsByAddressNativeResponses, unknown, ThrowOnError>({
             security: [{
                     key: 'Ultra_ApiKeyAuth',
@@ -2127,7 +2127,7 @@ export class Ultra extends HeyApiClient {
      * Request for token information and warnings of mints
      *
      */
-    public get5<ThrowOnError extends boolean = false>(options: Options<GetUltraV1ShieldData, ThrowOnError>): RequestResult<GetUltraV1ShieldResponses, GetUltraV1ShieldErrors, ThrowOnError> {
+    public getUltraV1Shield<ThrowOnError extends boolean = false>(options: Options<GetUltraV1ShieldData, ThrowOnError>): RequestResult<GetUltraV1ShieldResponses, GetUltraV1ShieldErrors, ThrowOnError> {
         return (options.client ?? this.client).get<GetUltraV1ShieldResponses, GetUltraV1ShieldErrors, ThrowOnError>({
             security: [{
                     key: 'Ultra_ApiKeyAuth',
@@ -2145,7 +2145,7 @@ export class Ultra extends HeyApiClient {
      * Request for the list of routers available in the routing engine of Ultra, which is [Juno](/docs/routing#juno-liquidity-engine)
      *
      */
-    public get6<ThrowOnError extends boolean = false>(options?: Options<GetUltraV1OrderRoutersData, ThrowOnError>): RequestResult<GetUltraV1OrderRoutersResponses, unknown, ThrowOnError> {
+    public getUltraV1OrderRouters<ThrowOnError extends boolean = false>(options?: Options<GetUltraV1OrderRoutersData, ThrowOnError>): RequestResult<GetUltraV1OrderRoutersResponses, unknown, ThrowOnError> {
         return (options?.client ?? this.client).get<GetUltraV1OrderRoutersResponses, unknown, ThrowOnError>({
             security: [{
                     key: 'Ultra_ApiKeyAuth',
@@ -2163,7 +2163,7 @@ export class Ultra extends HeyApiClient {
      * Request a search by token's symbol, name or mint address
      *
      */
-    public get7<ThrowOnError extends boolean = false>(options: Options<GetUltraV1SearchData, ThrowOnError>): RequestResult<GetUltraV1SearchResponses, GetUltraV1SearchErrors, ThrowOnError> {
+    public getUltraV1Search<ThrowOnError extends boolean = false>(options: Options<GetUltraV1SearchData, ThrowOnError>): RequestResult<GetUltraV1SearchResponses, GetUltraV1SearchErrors, ThrowOnError> {
         return (options.client ?? this.client).get<GetUltraV1SearchResponses, GetUltraV1SearchErrors, ThrowOnError>({
             security: [{
                     key: 'Ultra_ApiKeyAuth',

@@ -20,6 +20,24 @@ const TAG_PATHS: Record<string, readonly string[]> = {
   Ultra: ["ultra"],
 };
 
+function toPascalCase(segment: string): string {
+  return segment
+    .split(/[^a-zA-Z0-9]+/)
+    .filter(Boolean)
+    .map((part) => `${part[0]?.toUpperCase()}${part.slice(1)}`)
+    .join("");
+}
+
+function operationNameFromPath(operation: { method: string; path: string }): string {
+  const path = operation.path
+    .split("/")
+    .filter(Boolean)
+    .map((segment) => toPascalCase(segment.replace(/^\{|\}$/g, "")))
+    .join("");
+
+  return `${operation.method.toLowerCase()}${path}`;
+}
+
 export default defineConfig([
   {
     input: "./openapi/jupiter.yaml",
@@ -37,11 +55,11 @@ export default defineConfig([
             const tag = operation.tags?.[0];
             const path = tag === undefined ? undefined : TAG_PATHS[tag];
 
-            if (path === undefined) {
+            if (tag === undefined || path === undefined) {
               throw new TypeError(`Unsupported Jupiter API operation tag: ${tag ?? "none"}`);
             }
 
-            return [...path, operation.operationId ?? operation.method.toLowerCase()];
+            return [...path, operation.operationId ?? operationNameFromPath(operation)];
           },
           strategy: "single",
         },
